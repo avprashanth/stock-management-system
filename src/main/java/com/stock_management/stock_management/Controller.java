@@ -82,7 +82,7 @@ public class Controller {
 
         message = "Please upload an excel file!";
         return message;
-        // return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage(message));
+       // return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage(message));
     }
 
     @GetMapping("/companies")
@@ -193,17 +193,17 @@ public class Controller {
         }
     }
 
-    @PostMapping("/sellStocks")
-    String sellStocks(@RequestParam String companyId, @RequestParam String price, @RequestParam int quantity, String userId) {
-        String response = "";
-        try {
-            Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
-            response = stockDao.performSell(connection, companyId, price, quantity, userId);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return response;
-    }
+//    @PostMapping("/sellStocks")
+//    String sellStocks(@RequestParam String companyId, @RequestParam String price, @RequestParam int quantity, String userId) {
+//        String response = "";
+//        try {
+//            Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+//            response = stockDao.performSell(connection, companyId, price, quantity, userId);
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return response;
+//    }
 
     @PostMapping("/transactionReport")
     List<String> getTransactionReport(@RequestParam String userId) {

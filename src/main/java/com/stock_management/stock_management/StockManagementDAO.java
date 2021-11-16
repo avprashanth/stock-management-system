@@ -169,35 +169,35 @@ public class StockManagementDAO {
         return response;
     }
 
-    public String performSell(Connection connection, String companyId, String price, int quantity, String userId, String batchId) {
-        String response = "";
-
-        int netCountOfStocks = checkIfCompanyIsListedAtAskingPrice(connection, companyId, price, quantity);
-
-        if(netCountOfStocks >= 0) {
-
-            int userBalance = getUserBalance(connection, userId);
-            if(netQuantity < 0) {
-                response = "Transaction cancelled - Users cannot attempt to sell more than what they have";
-                return response;
-            }
-
-            String updatedQuantity = String.valueOf(netQuantity);
-
-            updateTradeRequests(connection,newRequestId,companyId,updatedQuantity,"Sell",price, "Success",null, null);
-            updateUserBalance(connection, userBalance + (Integer.parseInt(price) * (quantity)), userId);
-            updateCompanyStocks(connection, String.valueOf(netCountOfStocks + (2*quantity)), companyId);
-
-            calculateAndUpdateGain(connection, companyId, userId, price, quantity);
-            response = "Transaction successful";
-        } else {
-
-            updateTradeRequests(connection,newRequestId,companyId,String.valueOf(quantity),"Sell",price,"InProgress",null, null);
-            response = "Transaction placed on hold as the demanded price does not match the stock listing price";
-
-        }
-        return response;
-    }
+//    public String performSell(Connection connection, String companyId, String price, int quantity, String userId, String batchId) {
+//        String response = "";
+//
+//        int netCountOfStocks = checkIfCompanyIsListedAtAskingPrice(connection, companyId, price, quantity);
+//
+//        if(netCountOfStocks >= 0) {
+//
+//            int userBalance = getUserBalance(connection, userId);
+//            if(netQuantity < 0) {
+//                response = "Transaction cancelled - Users cannot attempt to sell more than what they have";
+//                return response;
+//            }
+//
+//            String updatedQuantity = String.valueOf(netQuantity);
+//
+//            updateTradeRequests(connection,newRequestId,companyId,updatedQuantity,"Sell",price, "Success",null, null);
+//            updateUserBalance(connection, userBalance + (Integer.parseInt(price) * (quantity)), userId);
+//            updateCompanyStocks(connection, String.valueOf(netCountOfStocks + (2*quantity)), companyId);
+//
+//            calculateAndUpdateGain(connection, companyId, userId, price, quantity);
+//            response = "Transaction successful";
+//        } else {
+//
+//            updateTradeRequests(connection,newRequestId,companyId,String.valueOf(quantity),"Sell",price,"InProgress",null, null);
+//            response = "Transaction placed on hold as the demanded price does not match the stock listing price";
+//
+//        }
+//        return response;
+//    }
 
     public int checkAvailableStocks(Connection conn, String companyId, int quantity) {
         int availableStocks = 0;
@@ -415,3 +415,4 @@ public class StockManagementDAO {
 //Request recommendations
 //Update stock prices by stock broker
 //Trades on hold
+

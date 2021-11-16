@@ -1,27 +1,41 @@
 package com.stock_management.stock_management;
 
 import org.apache.log4j.Logger;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 @RestController
 public class Controller {
     StockManagementDAO stockDao = new StockManagementDAO();
     static Logger logger = Logger.getLogger(Main.class.getName());
-    static final String DB_URL = "jdbc:mysql://localhost:3306/stock_management_db";
+    static final String DB_URL = "jdbc:mysql://10.0.0.199/stock_management_db";
     static final String USER = "root";
     static final String PASS = "root";
     static int num = 4;
     static Scanner myObj = new Scanner(System.in);
 
+    @PostMapping("/registerUser")     // create a body instread of multiple strings
+    String registerUser(@RequestParam String userId, @RequestParam String password,
+                        @RequestParam String address, @RequestParam String phoneNumber,
+                        @RequestParam String firstName, @RequestParam String lastName) {
+        String response = "";
+        try {
+            Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+            response = stockDao.registerUser(connection, userId, password, address, phoneNumber, firstName, lastName);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
 
     @PostMapping("/userLogin")
-    String userLogin(@RequestBody String userId, @RequestBody String password) {
+    String userLogin(@RequestParam String userId, @RequestParam String password) {
         String response = "";
         try {
             Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -35,26 +49,12 @@ public class Controller {
     }
 
     @GetMapping("/stockBrokerLogin")
-    String stockBrokerLogin(@RequestBody String userId, @RequestBody String password) {
+    String stockBrokerLogin(@RequestParam String userId, @RequestParam String password) {
         String response = "";
         try {
             Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
             response = stockDao.stockBrokerLogin(connection, userId, password);
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return response;
-    }
-
-    @PostMapping("/registerUser")
-    String registerUser(@RequestBody String userId, @RequestBody String password,
-                        @RequestBody String address, @RequestBody String phoneNumber,
-                        @RequestBody String firstName, @RequestBody String lastName) {
-        String response = "";
-        try {
-            Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
-            response = stockDao.registerUser(connection, userId, password, address, phoneNumber, firstName, lastName);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -82,7 +82,7 @@ public class Controller {
 
         message = "Please upload an excel file!";
         return message;
-       // return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage(message));
+        // return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage(message));
     }
 
     @GetMapping("/companies")
@@ -101,7 +101,7 @@ public class Controller {
 
     static List<CompanyStock> getCompanyList(Connection conn) {
         try {
-            PreparedStatement statement = conn.prepareStatement("Select company_id,price,available_quantity,share_type from CompanyStock");
+            PreparedStatement statement = conn.prepareStatement("Select company_id,price,available_quantity,share_type from CompanyStock order by created_time");
             ResultSet rs = statement.executeQuery();
             List<CompanyStock> companyStocks = new ArrayList<CompanyStock>();
 
@@ -121,8 +121,20 @@ public class Controller {
         }
     }
 
+    @PostMapping("/purchaseStocks")
+    String purchaseStocks(@RequestParam String companyId, @RequestParam int price, @RequestParam int quantity, @RequestParam String customerId) {
+        String response = "";
+        try {
+            Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+            response = stockDao.performBuy(connection, customerId, companyId, price, quantity);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
+
     @PostMapping("/cancelRequest")
-    String cancelRequest(@RequestBody String userId, @RequestBody String requestId) {
+    String cancelRequest(@RequestParam String userId, @RequestParam String requestId) {
         boolean response = false;
         try {
             Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -137,7 +149,7 @@ public class Controller {
     }
 
     @GetMapping("/tradeRequestsInProgress")
-    List<TradeRequest> getTradeRequestsInProgress(@RequestBody String userId) {
+    List<TradeRequest> getTradeRequestsInProgress(@RequestParam String userId) {
         boolean response = false;
         try {
             Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -162,7 +174,7 @@ public class Controller {
     }
 
     @PostMapping("/addBalance")
-    boolean addBalance(@RequestBody String userId,@RequestBody int balance) {
+    boolean addBalance(@RequestParam String userId,@RequestParam int balance) {
         boolean response = false;
         try {
             if(balance < 0)
@@ -181,20 +193,8 @@ public class Controller {
         }
     }
 
-    @PostMapping("/purchaseStocks")
-    String purchaseStocks(@RequestBody String companyId, @RequestBody String price, @RequestBody int quantity, String customerId) {
-        String response = "";
-        try {
-            Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
-            response = stockDao.performBuy(connection, customerId, companyId, price, quantity);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return response;
-    }
-
     @PostMapping("/sellStocks")
-    String sellStocks(@RequestBody String companyId, @RequestBody String price, @RequestBody int quantity, String userId) {
+    String sellStocks(@RequestParam String companyId, @RequestParam String price, @RequestParam int quantity, String userId) {
         String response = "";
         try {
             Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -206,7 +206,7 @@ public class Controller {
     }
 
     @PostMapping("/transactionReport")
-    List<String> getTransactionReport(@RequestBody String userId) {
+    List<String> getTransactionReport(@RequestParam String userId) {
 
         List<String> transactionReports = new ArrayList<>();
         try{
@@ -217,5 +217,64 @@ public class Controller {
         }
         return transactionReports;
     }
+
+    @GetMapping("/recommendations")
+    String getStock(@RequestParam String saferisk) {
+        try {
+            Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+            List<CompanyStock> getCompanyList = getCompanyList(connection);
+            Map<String, List<Integer>> hm = new HashMap<>();
+            List<Integer> values;
+            for(CompanyStock stock : getCompanyList) {
+                if(!hm.containsKey(stock.getCompany_id()))
+                {
+                    values = new ArrayList<>();
+                    values.add(stock.getPrice());
+                    hm.put(stock.getCompany_id(), values);
+                }
+                else {
+                    hm.get(stock.getCompany_id()).add(stock.getPrice());
+                }
+            }
+
+            if(saferisk.equals("risk")) {
+                String company = "";
+                int max = -1;
+                for(Map.Entry<String, List<Integer>> set: hm.entrySet()) {
+                    int res;
+                    List<Integer> l = set.getValue();
+                    res = l.get(l.size() - 1) - l.get(0);
+                    if(max < res) {
+                        company = set.getKey();
+                        max = res;
+                    }
+                }
+                return company;
+            }
+            else {
+                String company = "";
+                double min = Integer.MAX_VALUE;
+                for(Map.Entry<String, List<Integer>> set: hm.entrySet()) {
+                    double res;
+                    List<Integer> l = set.getValue();
+                    double sum = 0;
+                    for(int i = 0; i < l.size() - 1; i++) {
+                        sum = sum + Math.pow(l.get(i + 1) - l.get(i), 2);
+                    }
+                    res = sum/(l.size());
+                    if(min > res) {
+                        company = set.getKey();
+                        min = res;
+                    }
+                }
+                return company;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "error";
+    }
+
 
 }

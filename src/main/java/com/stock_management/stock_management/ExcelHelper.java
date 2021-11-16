@@ -40,7 +40,7 @@ public class ExcelHelper {
 
             long millis = System.currentTimeMillis();
             java.sql.Date date = new java.sql.Date(millis);
-            String sql = "INSERT INTO companystock (company_id, created_time, price, available_quantity, share_type, updated_time) VALUES (?, '2021-11-14', ?, ?, ?, '2021-11-14')";
+            String sql = "INSERT INTO companystock (company_id, created_time, price, available_quantity, share_type, updated_time) VALUES (?, CURRENT_TIMESTAMP, ?, ?, ?, CURRENT_TIMESTAMP)";
             PreparedStatement statement = connection.prepareStatement(sql);
 
             List<CompanyStock> companyStocks = new ArrayList<CompanyStock>();

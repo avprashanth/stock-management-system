@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 @RestController
 public class Controller {
+    StockManagementDAO stockDao = new StockManagementDAO();
     static Logger logger = Logger.getLogger(Main.class.getName());
     static final String DB_URL = "jdbc:mysql://localhost:3306/stock_management_db";
     static final String USER = "root";
@@ -18,57 +19,46 @@ public class Controller {
     static int num = 4;
     static Scanner myObj = new Scanner(System.in);
 
-    static int addUser(Connection conn) {
+
+    @PostMapping("/userLogin")
+    String userLogin(@RequestBody String userId, @RequestBody String password) {
+        String response = "";
         try {
-            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO users VALUES (?, 'test1', 'address1', '10010010', 'rama', 'thonupu');");
-            pstmt.setString(1, String.valueOf(num++));
-//          pstmt.setString(2, username);
-            int rs = pstmt.executeUpdate();
-            logger.info("inserted user1");
+            Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+            response = stockDao.validateUser(connection, userId, password);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return 1;
+
+        return response;
     }
 
-    static String getFirstUser(Connection conn) {
+    @GetMapping("/stockBrokerLogin")
+    String stockBrokerLogin(@RequestBody String userId, @RequestBody String password) {
+        String response = "";
         try {
-            PreparedStatement pstmt = conn.prepareStatement("Select password from users where user_id = ?;");
-            pstmt.setString(1, "3");
-            ResultSet rs = pstmt.executeQuery();
-            System.out.println(rs.toString());
-            return "User 1";
+            Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+            response = stockDao.stockBrokerLogin(connection, userId, password);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return "failed";
+        return response;
     }
 
-    @GetMapping("/hello")
-    String all() {
-        String res = "";
+    @PostMapping("/registerUser")
+    String registerUser(@RequestBody String userId, @RequestBody String password,
+                        @RequestBody String address, @RequestBody String phoneNumber,
+                        @RequestBody String firstName, @RequestBody String lastName) {
+        String response = "";
         try {
-            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
-
-            res = getFirstUser(conn);
-
+            Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+            response = stockDao.registerUser(connection, userId, password, address, phoneNumber, firstName, lastName);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return res;
-    }
-
-    @PostMapping("/register")
-    int insert(@RequestBody String username) {
-        try {
-            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
-
-            int res = addUser(conn);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return 1;
+        return response;
     }
 
     @PostMapping("/upload")
@@ -190,4 +180,42 @@ public class Controller {
             throw new RuntimeException("Database error: " + e.getMessage());
         }
     }
+
+    @PostMapping("/purchaseStocks")
+    String purchaseStocks(@RequestBody String companyId, @RequestBody String price, @RequestBody int quantity, String customerId) {
+        String response = "";
+        try {
+            Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+            response = stockDao.performBuy(connection, customerId, companyId, price, quantity);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
+
+    @PostMapping("/sellStocks")
+    String sellStocks(@RequestBody String companyId, @RequestBody String price, @RequestBody int quantity, String userId) {
+        String response = "";
+        try {
+            Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+            response = stockDao.performSell(connection, companyId, price, quantity, userId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
+
+    @PostMapping("/transactionReport")
+    List<String> getTransactionReport(@RequestBody String userId) {
+
+        List<String> transactionReports = new ArrayList<>();
+        try{
+            Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+            transactionReports.addAll(stockDao.getTransactionReports(connection, userId, "Success"));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return transactionReports;
+    }
+
 }

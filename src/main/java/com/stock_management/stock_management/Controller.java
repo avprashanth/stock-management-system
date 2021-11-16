@@ -1,8 +1,6 @@
 package com.stock_management.stock_management;
 
 import org.apache.log4j.Logger;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -133,4 +131,63 @@ public class Controller {
         }
     }
 
+    @PostMapping("/cancelRequest")
+    String cancelRequest(@RequestBody String userId, @RequestBody String requestId) {
+        boolean response = false;
+        try {
+            Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+            PreparedStatement statement = connection.prepareStatement("DELETE from TradeRequest where user_id = ? and request_id = ?");
+            statement.setString(1,userId);
+            statement.setString(2, requestId);
+            statement.executeQuery();
+            return "Request cancelled";
+        } catch (SQLException e) {
+            throw new RuntimeException("Database error: " + e.getMessage());
+        }
+    }
+
+    @GetMapping("/tradeRequestsInProgress")
+    List<TradeRequest> getTradeRequestsInProgress(@RequestBody String userId) {
+        boolean response = false;
+        try {
+            Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+            PreparedStatement statement = connection.prepareStatement("Select request_id,company_id,quantity from TradeRequest where user_id = ? and status = ? ");
+            statement.setString(1,userId);
+            statement.setString(2,"In progress");
+            ResultSet rs = statement.executeQuery();
+            List<TradeRequest> tradeRequests = new ArrayList<TradeRequest>();
+
+            while (rs.next()) {
+                String id = rs.getString("request_id");
+                String companyId = rs.getString("company_id");
+                int quantity = rs.getInt("quantity");
+
+                TradeRequest request = new TradeRequest(id,companyId,quantity);
+                tradeRequests.add(request);
+            }
+            return tradeRequests;
+        } catch (SQLException e) {
+            throw new RuntimeException("Database error: " + e.getMessage());
+        }
+    }
+
+    @PostMapping("/addBalance")
+    boolean addBalance(@RequestBody String userId,@RequestBody int balance) {
+        boolean response = false;
+        try {
+            if(balance < 0)
+                return false;
+            Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+            PreparedStatement statement = connection.prepareStatement("SELECT acc_balance FROM Customer where customer_id =  ?");
+            statement.setString(1,userId);
+            ResultSet rs = statement.executeQuery();
+            int accBalance = rs.getInt("acc_balance");
+            PreparedStatement updateStatement = connection.prepareStatement("UPDATE Customer SET acc_balance = ?");
+            statement.setInt(1,accBalance + balance);
+            statement.executeQuery();
+            return true;
+        } catch (SQLException e) {
+            throw new RuntimeException("Database error: " + e.getMessage());
+        }
+    }
 }

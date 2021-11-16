@@ -1,4 +1,4 @@
-package com.stock_management.stock_management;
+package com.stock_management;
 
 import org.apache.log4j.Logger;
 

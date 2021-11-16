@@ -1,6 +1,9 @@
-package com.stock_management.stock_management;
+package com.stock_management;
 
 public class TradeRequest {
+
+    public TradeRequest() {
+    }
 
     private String request_id;
     private String company_id;

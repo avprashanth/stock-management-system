@@ -1,16 +1,16 @@
-package com.stock_management.stock_management;
+package com.stock_management;
 
 
 public class CompanyStock {
+
+    public CompanyStock() {
+    }
 
     private String company_id;
     private int price;
     private int available_quantity;
     private String share_type;
 
-    public CompanyStock() {
-
-    }
 
     public CompanyStock(String company_id, int price, int available_quantity, String share_type) {
         this.company_id = company_id;

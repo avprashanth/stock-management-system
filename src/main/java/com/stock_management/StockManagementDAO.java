@@ -1,4 +1,4 @@
-package com.stock_management.stock_management;
+package com.stock_management;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
@@ -19,11 +19,11 @@ public class StockManagementDAO {
 
     static SHA512Hasher hashObj = new SHA512Hasher();
 
-    static String registerUser(Connection connection, String username, String password,
-                               String address, String phoneNumber, String firstName, String lastName) {
+    String registerUser(Connection connection, String username, String password,
+                               String address, String phoneNumber, String firstName, String lastName, String role) {
         String response = "";
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO users VALUES (?, ?, ?, ?, ?, ?);");
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO users VALUES (?, ?, ?, ?, ?, ?, ?);");
             String hashedPassword = hashObj.hash(password);
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, hashedPassword);
@@ -31,15 +31,47 @@ public class StockManagementDAO {
             preparedStatement.setString(4, phoneNumber);
             preparedStatement.setString(5, firstName);
             preparedStatement.setString(6, lastName);
+            preparedStatement.setString(7, role);
 
             preparedStatement.executeQuery();
-            logger.info("inserted user1");
+
+            if(role.equals("Admin")) {
+                updateStockBrokerTable(connection, username);
+            } else if (role.equals("Customer")) {
+                updateCustomerTable(connection, username);
+            } else {
+                response = "Role should either be Admin/Customer";
+                return response;
+            }
+
+            logger.info("Inserted user");
             response = " Registration successful";
         } catch (SQLException e) {
             response = " Registration Failed";
             e.printStackTrace();
         }
         return response;
+    }
+
+    void updateStockBrokerTable(Connection connection, String username) {
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO StockBroker VALUES (?);");
+            preparedStatement.setString(1,username);
+            preparedStatement.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    void updateCustomerTable(Connection connection, String username) {
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO Customer VALUES (?, ?);");
+            preparedStatement.setString(1,username);
+            preparedStatement.setInt(2,0);
+            preparedStatement.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 
     static String validateUser(Connection conn, String userId, String password) {
@@ -402,6 +434,30 @@ public class StockManagementDAO {
             e.printStackTrace();
         }
         return transactionReports;
+    }
+
+
+    public List<CompanyStock> getCompanyList(Connection conn) {
+        List<CompanyStock> companyStocks = new ArrayList<CompanyStock>();
+        try {
+            PreparedStatement statement = conn.prepareStatement("Select company_id,price,available_quantity,share_type from CompanyStock order by created_time");
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                String id = rs.getString("company_id");
+                int price = rs.getInt("price");
+                int quantity = rs.getInt("available_quantity");
+                String shareType = rs.getString("share_type");
+
+                CompanyStock stock = new CompanyStock(id,price,quantity,shareType);
+
+                companyStocks.add(stock);
+
+            }
+            return companyStocks;
+        } catch (SQLException e) {
+            throw new RuntimeException("Database error: " + e.getMessage());
+        }
     }
 
 

@@ -572,6 +572,25 @@ public class StockManagementDAO {
         }
     }
 
+    public List<Portfolio> getPortfolioDetails(Connection connection, String userId) {
+        List<Portfolio> resultList = new ArrayList<>();
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("Select * from stockdetails where customer_id = ?");
+            preparedStatement.setString(1, userId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()) {
+                Portfolio portfolio = new Portfolio();
+                portfolio.setCustomer_id(userId);
+                portfolio.setCompany_id(resultSet.getString(2));
+                portfolio.setGain(resultSet.getInt(3));
+                resultList.add(portfolio);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resultList;
+    }
+
 }
 
 

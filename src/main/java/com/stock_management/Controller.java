@@ -262,4 +262,16 @@ public class Controller {
     }
 
 
+    @PostMapping("/portfolio")
+    List<Portfolio> getPortfolioDetails(@RequestParam String userId) {
+        List<Portfolio> getPortfolioDetails = new ArrayList<>();
+        try{
+            Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+            getPortfolioDetails.addAll(stockDao.getPortfolioDetails(connection, userId));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return getPortfolioDetails;
+    }
+
 }

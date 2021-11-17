@@ -273,8 +273,9 @@ public class StockManagementDAO {
             preparedStatement.setString(1,companyId);
 
             ResultSet resultSet = preparedStatement.executeQuery();
-            resultSet.next();
-            availableStocks = resultSet.getInt("available_quantity"); // dummy column index
+            while(resultSet.next()) {
+                availableStocks = resultSet.getInt("available_quantity"); // dummy column index
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -288,8 +289,9 @@ public class StockManagementDAO {
             PreparedStatement preparedStatement = connection.prepareStatement("Select acc_balance from customer where customer_id = ?");
             preparedStatement.setString(1, userId);
             ResultSet resultSet = preparedStatement.executeQuery();
-            resultSet.next();
-            balance = resultSet.getInt("acc_balance");
+            while(resultSet.next()) {
+                balance = resultSet.getInt("acc_balance");
+            }
         } catch(SQLException e) {
             e.printStackTrace();
         }
@@ -303,8 +305,9 @@ public class StockManagementDAO {
             PreparedStatement preparedStatement = connection.prepareStatement("Select price from companystock where company_id = ?");
             preparedStatement.setString(1,companyId);
             ResultSet resultSet = preparedStatement.executeQuery();
-            resultSet.next();
-            listedPrice = resultSet.getInt(1);
+            while(resultSet.next()) {
+                listedPrice = resultSet.getInt(1);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -433,7 +436,7 @@ public class StockManagementDAO {
             preparedStatement.setString(1,companyId);
             preparedStatement.setString(2,userId);
             ResultSet resultSet = preparedStatement.executeQuery();
-            if(resultSet.next()) {
+            while(resultSet.next()) {
                 preparedStatement = connection.prepareStatement("UPDATE stockdetails SET gain = ? WHERE company_id = ? and customer_id = ?");
                 preparedStatement.setString(1, gainOrLoss);
                 int count = preparedStatement.executeUpdate();

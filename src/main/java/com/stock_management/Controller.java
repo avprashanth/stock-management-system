@@ -24,11 +24,11 @@ public class Controller {
     @PostMapping("/registerUser")
     String registerUser(@RequestParam String userId, @RequestParam String password,
                         @RequestParam String address, @RequestParam String phoneNumber,
-                        @RequestParam String firstName, @RequestParam String lastName) {
+                        @RequestParam String firstName, @RequestParam String lastName, @RequestParam String role) {
         String response = "";
         try {
             Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
-            response = stockDao.registerUser(connection, userId, password, address, phoneNumber, firstName, lastName);
+            response = stockDao.registerUser(connection, userId, password, address, phoneNumber, firstName, lastName, role);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -165,7 +165,7 @@ public class Controller {
 
             ResultSet rs = statement.executeQuery();
             int accBalance = 0;
-            if(rs.next()) accBalance  = rs.getInt("accountBalance");
+            if(rs.next()) accBalance  = rs.getInt("acc_balance");
             else return false;
             PreparedStatement updateStatement = connection.prepareStatement("UPDATE customer SET acc_balance = ? where customer_id = ?");
             updateStatement.setInt(1,accBalance + amount);
@@ -204,7 +204,7 @@ public class Controller {
     }
 
     @GetMapping("/recommendations")
-    String getStock(@RequestParam String saferisk) {
+    ArrayList<String> getStock(@RequestParam String saferisk) throws SQLException {
         try {
             Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
             List<CompanyStock> getCompanyList = stockDao.getCompanyList(connection);
@@ -222,43 +222,59 @@ public class Controller {
                 }
             }
 
+            Map<Integer, String> treemap =
+                    new TreeMap<Integer, String>(Collections.reverseOrder());
+            ArrayList<String> res
+                    = new ArrayList<String>();
+
+            int noofrecommendations = 5;
             if(saferisk.equals("risk")) {
-                String company = "";
-                int max = -1;
-                for(Map.Entry<String, List<Integer>> set: hm.entrySet()) {
-                    int res;
-                    List<Integer> l = set.getValue();
-                    res = l.get(l.size() - 1) - l.get(0);
-                    if(max < res) {
-                        company = set.getKey();
-                        max = res;
-                    }
+                for(Map.Entry<String, List<Integer>> companyData: hm.entrySet()) {
+                    int pricedifference;
+                    List<Integer> l = companyData.getValue();
+                    pricedifference = l.get(l.size() - 1) - l.get(0);
+                    treemap.put(pricedifference, companyData.getKey());
                 }
-                return company;
+
+                Set set = treemap.entrySet();
+                Iterator i = set.iterator();
+                // Traverse map and print elements
+                while (i.hasNext() && noofrecommendations > 0) {
+                    Map.Entry me = (Map.Entry)i.next();
+                    System.out.print(me.getKey() + ": ");
+                    System.out.println(me.getValue());
+                    res.add((String) me.getValue());
+                    noofrecommendations--;
+                }
+
+                return res;
             }
             else {
-                String company = "";
-                double min = Integer.MAX_VALUE;
-                for(Map.Entry<String, List<Integer>> set: hm.entrySet()) {
-                    double res;
-                    List<Integer> l = set.getValue();
+                for(Map.Entry<String, List<Integer>> companyData: hm.entrySet()) {
+                    int pricedeviation;
+                    List<Integer> l = companyData.getValue();
                     double sum = 0;
-                    for(int i = 0; i < l.size() - 1; i++) {
-                        sum = sum + Math.pow(l.get(i + 1) - l.get(i), 2);
+                    for (int j = 0; j < l.size() - 1; j++) {
+                        sum = sum + Math.pow(l.get(j + 1) - l.get(j), 2);
                     }
-                    res = sum/(l.size());
-                    if(min > res) {
-                        company = set.getKey();
-                        min = res;
-                    }
+                    pricedeviation = (int) (sum / (l.size()));
+                    treemap.put(pricedeviation, companyData.getKey());
                 }
-                return company;
+                Set set = treemap.entrySet();
+                Iterator i = set.iterator();
+                // Traverse map and print elements
+                while (i.hasNext() && noofrecommendations > 0) {
+                    Map.Entry me = (Map.Entry)i.next();
+                    System.out.print(me.getKey() + ": ");
+                    System.out.println(me.getValue());
+                    res.add((String) me.getValue());
+                    noofrecommendations--;
+                }
+                return res;
             }
-
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw e;
         }
-        return "error";
     }
 
 
@@ -272,6 +288,66 @@ public class Controller {
             e.printStackTrace();
         }
         return getPortfolioDetails;
+    }
+
+
+    @GetMapping("/companiesByUser")
+    List<CompanyStock> GetCompaniesByUserId(String userId) {
+        List<CompanyStock> res = null;
+        try {
+            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+            res = getUserCompanyList(conn,userId);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+
+    static List<CompanyStock> getUserCompanyList(Connection conn,String userId) {
+        try {
+            PreparedStatement statement = conn.prepareStatement("select distinct t1.company_id from traderequest t1 where action = 'buy' and userId = ?" +
+                    "and t1.company_id IN ( select * from  traderequest t2 where action = 'sell'" +
+                    "and t2.batch_id = t1.batch_id" +
+                    "and t2.quantity < t1.quantity and userId = ?)" +
+                    "UNION" +
+                    "select distinct t1.company_id from traderequest t1 where action = 'buy' and userId = ?" +
+                    "and t1.company_id NOT IN ( select * from traderequest t2 where action = 'sell' and userId = ?)");
+            statement.setString(1,userId);
+            statement.setString(2,userId);
+            statement.setString(3,userId);
+            statement.setString(4,userId);
+            ResultSet rs = statement.executeQuery();
+            List<CompanyStock> companyStocks = new ArrayList<CompanyStock>();
+
+            while (rs.next()) {
+                String id = rs.getString("company_id");
+                int price = rs.getInt("price");
+                int quantity = rs.getInt("available_quantity");
+
+                CompanyStock stock = new CompanyStock(id,price,quantity);
+
+                companyStocks.add(stock);
+            }
+            return companyStocks;
+        } catch (SQLException e) {
+            throw new RuntimeException("Database error: " + e.getMessage());
+        }
+    }
+
+    @GetMapping("/getBalance")
+    UserBalance GetBalance(@RequestParam String userId) {
+        UserBalance balance = null;
+        try {
+            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            balance = new UserBalance();
+            int res = stockDao.getUserBalance(conn,userId);
+            balance.setBalance(res);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return balance;
     }
 
 }

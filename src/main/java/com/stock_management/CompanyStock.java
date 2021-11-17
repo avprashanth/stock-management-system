@@ -6,18 +6,13 @@ public class CompanyStock {
     public CompanyStock() {
     }
 
-    private String company_id;
-    private int price;
-    private int available_quantity;
-    private String share_type;
-
-
-    public CompanyStock(String company_id, int price, int available_quantity, String share_type) {
+    public CompanyStock(String company_id, int price, int available_quantity) {
         this.company_id = company_id;
         this.price = price;
         this.available_quantity = available_quantity;
-        this.share_type = share_type;
     }
+
+    private String company_id;
 
     public String getCompany_id() {
         return company_id;
@@ -43,11 +38,8 @@ public class CompanyStock {
         this.available_quantity = available_quantity;
     }
 
-    public String getShare_type() {
-        return share_type;
-    }
+    private int price;
+    private int available_quantity;
 
-    public void setShare_type(String share_type) {
-        this.share_type = share_type;
+
     }
-}

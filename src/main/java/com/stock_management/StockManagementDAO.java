@@ -21,7 +21,7 @@ public class StockManagementDAO {
     static SHA512Hasher hashObj = new SHA512Hasher();
 
     String registerUser(Connection connection, String username, String password,
-                               String address, String phoneNumber, String firstName, String lastName) {
+                               String address, String phoneNumber, String firstName, String lastName, String role) {
         String response = "";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO users VALUES (?, ?, ?, ?, ?, ?);");
@@ -33,13 +33,18 @@ public class StockManagementDAO {
             preparedStatement.setString(5, firstName);
             preparedStatement.setString(6, lastName);
 
-            preparedStatement.executeQuery();
-            updateCustomerTable(connection, username);
+            preparedStatement.executeUpdate();
+
+            if(role.equals("Customer"))
+                updateCustomerTable(connection, username);
+            else if(role.equals("Admin")){
+                updateStockBrokerTable(connection, username);
+            }
 
             logger.info("Inserted user");
             response = " Registration successful";
         } catch (SQLException e) {
-            response = " Registration Failed";
+            response = " Registration Failed. Please try again later";
             e.printStackTrace();
         }
         return response;
@@ -47,7 +52,7 @@ public class StockManagementDAO {
 
     void updateStockBrokerTable(Connection connection, String username) {
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO stockBroker VALUES (?);");
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO stockbroker VALUES (?);");
             preparedStatement.setString(1,username);
             preparedStatement.executeUpdate();
         }catch (SQLException e){
@@ -57,7 +62,7 @@ public class StockManagementDAO {
 
     void updateCustomerTable(Connection connection, String username) {
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO Customer VALUES (?, ?);");
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO customer VALUES (?, ?);");
             preparedStatement.setString(1,username);
             preparedStatement.setInt(2,0);
             preparedStatement.executeUpdate();
@@ -70,7 +75,7 @@ public class StockManagementDAO {
         String response = "";
         try {
 
-            PreparedStatement pstmt = conn.prepareStatement("Select password from users where user_id = ?;");
+            PreparedStatement pstmt = conn.prepareStatement("Select password from users u join customer c on u.user_id = c.customer_id where u.user_id = ?;");
             pstmt.setString(1, userId);
             ResultSet rs = pstmt.executeQuery();
             String stored_password = "";
@@ -85,6 +90,7 @@ public class StockManagementDAO {
                 response = "Authentication failed";
             }
         } catch (SQLException e) {
+            response = "Unexpected error. Please try again later";
             e.printStackTrace();
         }
         return response;
@@ -93,7 +99,7 @@ public class StockManagementDAO {
     public String stockBrokerLogin(Connection connection, String userId, String password) {
         String response = "";
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("Select passwords from stockBrokers where broker_id = ?;");
+            PreparedStatement preparedStatement = connection.prepareStatement("Select u.password from users u join stockbrokers  on u.user_id = s.broker_id where u.user_id = ?;");
             preparedStatement.setString(1, userId);
             ResultSet rs = preparedStatement.executeQuery();
             String stored_password = "";
@@ -341,7 +347,7 @@ public class StockManagementDAO {
 
     public void updateUserBalance(Connection connection, int balance, String userId) {
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement("Update user set acc_balance = ? where customer_id = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("Update users set acc_balance = ? where customer_id = ?");
             preparedStatement.setString(1, String.valueOf(balance));
             preparedStatement.setString(2, userId);
             preparedStatement.executeUpdate();
@@ -478,16 +484,15 @@ public class StockManagementDAO {
     public List<CompanyStock> getCompanyList(Connection conn) {
         List<CompanyStock> companyStocks = new ArrayList<CompanyStock>();
         try {
-            PreparedStatement statement = conn.prepareStatement("Select company_id,price,available_quantity,share_type from companystock order by created_time");
+            PreparedStatement statement = conn.prepareStatement("Select company_id,price,available_quantity from companystock order by created_time");
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
                 String id = rs.getString("company_id");
                 int price = rs.getInt("price");
                 int quantity = rs.getInt("available_quantity");
-                String shareType = rs.getString("share_type");
 
-                CompanyStock stock = new CompanyStock(id,price,quantity,shareType);
+                CompanyStock stock = new CompanyStock(id,price,quantity);
 
                 companyStocks.add(stock);
 
@@ -511,7 +516,6 @@ public class StockManagementDAO {
                 int quantity = resultSet.getInt(4);
                 String action = resultSet.getString(5);
                 String requestId = resultSet.getString(6);
-                String batchId = resultSet.getString((7));
                 if (action.equals("buy"))
                     UpdatePurchaseRequests(connection, userId, companyId, price, quantity, requestId);
                 else if (action.equals("sell"))

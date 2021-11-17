@@ -32,17 +32,15 @@ public class ExcelHelper {
         return true;
     }
 
-    public static List<CompanyStock> excelToCompanyStocks(InputStream is, Connection connection) {
+    public static void excelToCompanyStocks(InputStream is, Connection connection) {
         try {
             Workbook workbook = new XSSFWorkbook(is);
 
             Sheet sheet = workbook.getSheet(SHEET);
             Iterator<Row> rows = sheet.iterator();
 
-            String sql = "INSERT INTO companystock (id, company_id, created_time, price, available_quantity, share_type, updated_time) VALUES (?,?, CURRENT_TIMESTAMP, ?, ?, ?, CURRENT_TIMESTAMP)";
+            String sql = "INSERT INTO companystock (id, company_id, created_time, price, available_quantity, updated_time) VALUES (?,?, CURRENT_TIMESTAMP, ?, ?, CURRENT_TIMESTAMP)";
             PreparedStatement statement = connection.prepareStatement(sql);
-
-            List<CompanyStock> companyStocks = new ArrayList<CompanyStock>();
 
             int rowNumber = 0;
             while (rows.hasNext()) {
@@ -66,26 +64,17 @@ public class ExcelHelper {
                     switch (cellIdx) {
                         case 0:
                             String company_id = currentCell.getStringCellValue();
-                            stock.setCompany_id(company_id);
                             statement.setString(2, company_id);
                             break;
 
                         case 1:
                             int price = (int) currentCell.getNumericCellValue();
-                            stock.setPrice(price);
                             statement.setInt(3, price);
                             break;
 
                         case 2:
                             int quantity = (int) currentCell.getNumericCellValue();
-                            stock.setAvailable_quantity(quantity);
                             statement.setInt(4, quantity);
-                            break;
-
-                        case 3:
-                            String share_type = currentCell.getStringCellValue();
-                            stock.setShare_type(share_type);
-                            statement.setString(5, share_type);
                             break;
 
                         default:
@@ -95,13 +84,11 @@ public class ExcelHelper {
                     cellIdx++;
                 }
                 statement.addBatch();
-                companyStocks.add(stock);
 
                 statement.executeBatch();
             }
 
             workbook.close();
-            return companyStocks;
         } catch (IOException e) {
             throw new RuntimeException("fail to parse Excel file: " + e.getMessage());
         } catch (SQLException e) {

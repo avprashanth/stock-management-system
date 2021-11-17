@@ -3,6 +3,7 @@ package com.stock_management;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
+import java.net.ConnectException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,10 +21,10 @@ public class StockManagementDAO {
     static SHA512Hasher hashObj = new SHA512Hasher();
 
     String registerUser(Connection connection, String username, String password,
-                               String address, String phoneNumber, String firstName, String lastName, String role) {
+                               String address, String phoneNumber, String firstName, String lastName) {
         String response = "";
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO users VALUES (?, ?, ?, ?, ?, ?, ?);");
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO users VALUES (?, ?, ?, ?, ?, ?);");
             String hashedPassword = hashObj.hash(password);
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, hashedPassword);
@@ -31,18 +32,9 @@ public class StockManagementDAO {
             preparedStatement.setString(4, phoneNumber);
             preparedStatement.setString(5, firstName);
             preparedStatement.setString(6, lastName);
-            preparedStatement.setString(7, role);
 
             preparedStatement.executeQuery();
-
-            if(role.equals("Admin")) {
-                updateStockBrokerTable(connection, username);
-            } else if (role.equals("Customer")) {
-                updateCustomerTable(connection, username);
-            } else {
-                response = "Role should either be Admin/Customer";
-                return response;
-            }
+            updateCustomerTable(connection, username);
 
             logger.info("Inserted user");
             response = " Registration successful";
@@ -55,7 +47,7 @@ public class StockManagementDAO {
 
     void updateStockBrokerTable(Connection connection, String username) {
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO StockBroker VALUES (?);");
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO stockBroker VALUES (?);");
             preparedStatement.setString(1,username);
             preparedStatement.executeUpdate();
         }catch (SQLException e){
@@ -146,15 +138,10 @@ public class StockManagementDAO {
             response = "Balance insufficient";
             return response;
         }
-        int availableStocks = checkAvailableStocks(connection, companyId, quantity);
+        int availableStocks = checkAvailableStocks(connection, companyId);
         if(availableStocks >= quantity) {
             String requestId = UUID.randomUUID().toString();
-            String query = "select price from companystock where company_id = ?";
-            PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1, companyId);
-            ResultSet set = statement.executeQuery();
-            set.next();
-            int stockPrice = set.getInt("price");
+            int stockPrice = getCompanyPrice(connection, companyId);
             String status = "";
             if(stockPrice == price) status = "success";
             else status = "failure";
@@ -172,19 +159,12 @@ public class StockManagementDAO {
             statement1.setString(6, batchId);
             statement1.setString(7, userId);
             statement1.executeUpdate();
-
+            updateUserBalance(connection, userBalance - (price * quantity), userId);
+            updateCompanyStocks(connection, availableStocks - quantity, companyId);
             response = "Transaction successful";
         } else {
             String requestId = UUID.randomUUID().toString();
-            String query = "select price from companystock where company_id = ?";
-            PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1, companyId);
-            ResultSet set = statement.executeQuery();
-            set.next();
-            int stockPrice = set.getInt("price");
-            String status = "";
-            if(stockPrice == price) status = "success";
-            else status = "failure";
+            String status = "failure";
 
             String sql = "INSERT INTO traderequest VALUES (?, ?, ?, 'buy', ?, ?, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?)";
 
@@ -201,40 +181,95 @@ public class StockManagementDAO {
         return response;
     }
 
-//    public String performSell(Connection connection, String companyId, String price, int quantity, String userId, String batchId) {
-//        String response = "";
-//
-//        int netCountOfStocks = checkIfCompanyIsListedAtAskingPrice(connection, companyId, price, quantity);
-//
-//        if(netCountOfStocks >= 0) {
-//
-//            int userBalance = getUserBalance(connection, userId);
-//            if(netQuantity < 0) {
-//                response = "Transaction cancelled - Users cannot attempt to sell more than what they have";
-//                return response;
-//            }
-//
-//            String updatedQuantity = String.valueOf(netQuantity);
-//
-//            updateTradeRequests(connection,newRequestId,companyId,updatedQuantity,"Sell",price, "Success",null, null);
-//            updateUserBalance(connection, userBalance + (Integer.parseInt(price) * (quantity)), userId);
-//            updateCompanyStocks(connection, String.valueOf(netCountOfStocks + (2*quantity)), companyId);
-//
-//            calculateAndUpdateGain(connection, companyId, userId, price, quantity);
-//            response = "Transaction successful";
-//        } else {
-//
-//            updateTradeRequests(connection,newRequestId,companyId,String.valueOf(quantity),"Sell",price,"InProgress",null, null);
-//            response = "Transaction placed on hold as the demanded price does not match the stock listing price";
-//
-//        }
-//        return response;
-//    }
+    private int getCompanyPrice(Connection connection, String companyId) throws SQLException {
+        String query = "select price from companystock where company_id = ?";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setString(1, companyId);
+        ResultSet set = statement.executeQuery();
+        set.next();
+        int stockPrice = set.getInt("price");
+        return  stockPrice;
+    }
 
-    public int checkAvailableStocks(Connection conn, String companyId, int quantity) {
+    public String performSell(Connection connection, String companyId, int price, int quantity, String userId, String batchId) throws SQLException {
+        String response = "";
+        int userBalance = getUserBalance(connection, userId);
+        String status = "";
+        String query = "select quantity from traderequest where user_id = ? and company_id = ? and batch_id = ? and action = 'buy' and status = 'success'" ;
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setString(1, userId);
+        statement.setString(2, companyId);
+        statement.setString(3, batchId);
+        ResultSet set = statement.executeQuery();
+        int totalStocksAvailable = 0;
+        while (set.next())
+        {
+            totalStocksAvailable += set.getInt("quantity");
+        }
+        String query1 = "select quantity from traderequest where user_id = ? and company_id = ? and batch_id = ? and action = 'sell'";
+        PreparedStatement statement1 = connection.prepareStatement(query1);
+        statement1.setString(1, userId);
+        statement1.setString(2, companyId);
+        statement1.setString(3, batchId);
+        ResultSet resultSet = statement1.executeQuery();
+        int soldStocks = 0;
+        while (resultSet.next())
+        {
+            soldStocks += resultSet.getInt("quantity");
+        }
+        int availableQuantity = totalStocksAvailable - soldStocks;
+        int availableStocks = checkAvailableStocks(connection, companyId);
+        //user level stocks
+        if(availableQuantity >= quantity)
+        {
+            String requestId = UUID.randomUUID().toString();
+            int stockPrice = getCompanyPrice(connection, companyId);
+            if(stockPrice == price) status = "success";
+            else status = "failure";
+
+            String sql = "INSERT INTO traderequest VALUES (?, ?, ?, 'sell', ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?)";
+            PreparedStatement statement2 = connection.prepareStatement(sql);
+            statement2.setString(1, requestId);
+            statement2.setString(2, companyId);
+            statement2.setInt(3, quantity);
+            statement2.setString(4, status);
+            statement2.setInt(5, price);
+            statement2.setString(6, batchId);
+            statement2.setString(7, userId);
+            statement2.executeUpdate();
+            if(status.equals("success"))
+                updateUserBalance(connection, userBalance + (price * quantity), userId);
+            updateCompanyStocks(connection, availableStocks + quantity, companyId);
+            response = "Transaction successful";
+        }
+        else
+            response = "Transaction fail";
+        if(status.equals("success")) {
+            String buyQuery =
+                    "select price from traderequest" +
+                            " where user_id = ? and company_id = ? and batch_id = ? and status = 'success' and action = 'buy'";
+            PreparedStatement statement3 = connection.prepareStatement(buyQuery);
+            statement3.setString(1, userId);
+            statement3.setString(2, companyId);
+            statement3.setString(3, batchId);
+            ResultSet rs = statement3.executeQuery();
+            rs.next();
+            int buyprice = rs.getInt("price");
+            int gain = (price - buyprice) * quantity;
+            String insertDetails = "insert into stockdetails values (?, ?, ?)";
+            PreparedStatement statement4 = connection.prepareStatement(insertDetails);
+            statement4.setString(1, userId);
+            statement4.setString(2, companyId);
+            statement4.setInt(3, gain);
+            statement4.executeUpdate();
+        }
+        return response;
+    }
+
+    public int checkAvailableStocks(Connection conn, String companyId) {
         int availableStocks = 0;
         try{
-            PreparedStatement preparedStatement = conn.prepareStatement("Select available_quantity from companystock where company_id = ?");
+            PreparedStatement preparedStatement = conn.prepareStatement("Select available_quantity from companystock where company_id = ? order by created_time desc limit 1");
             preparedStatement.setString(1,companyId);
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -278,7 +313,7 @@ public class StockManagementDAO {
     }
 
     public void updateTradeRequests(Connection connection, String requestId,
-                                    String companyId, String quantity, String action, String price, String status, String updatedTime, String cancelTime) {
+                                    String companyId, String quantity, String action, int price, String status, String updatedTime, String cancelTime) {
 
         try{
             Date javaDate = new Date(0);
@@ -290,7 +325,7 @@ public class StockManagementDAO {
             preparedStatement.setString(2,companyId);
             preparedStatement.setString(3,quantity);
             preparedStatement.setString(4,action);
-            preparedStatement.setString(5,price);
+            preparedStatement.setInt(5,price);
             preparedStatement.setString(6,status);
             preparedStatement.setString(7,currDate);
             preparedStatement.setString(8,updatedTime);
@@ -330,11 +365,11 @@ public class StockManagementDAO {
         return availableStocks;
     }
 
-    public void updateCompanyStocks(Connection connection, String availableStocks, String companyId) {
+    public void updateCompanyStocks(Connection connection, int availableStocks, String companyId) {
         String updateCompanyStocks = "Update Company set quantity = ? where company_id = ?";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(updateCompanyStocks);
-            preparedStatement.setString(1,availableStocks);
+            preparedStatement.setInt(1,availableStocks);
             preparedStatement.setString(2,companyId);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -342,13 +377,13 @@ public class StockManagementDAO {
     }
 
 
-    public int checkIfCompanyIsListedAtAskingPrice(Connection connection, String companyId, String askingPrice, int quantity) {
+    public int checkIfCompanyIsListedAtAskingPrice(Connection connection, String companyId, int askingPrice, int quantity) {
         int availableStocks = 0;
         String selectCompanyPrice = "Select quantity from companystock where company_id = ? and price >= ?";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(selectCompanyPrice);
             preparedStatement.setString(1, companyId);
-            preparedStatement.setString(2, askingPrice);
+            preparedStatement.setInt(2, askingPrice);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -358,10 +393,10 @@ public class StockManagementDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return availableStocks-quantity;
+        return availableStocks;
     }
 
-    public void calculateAndUpdateGain(Connection connection, String companyId, String userId, String price, int quantity) {
+    public void calculateAndUpdateGain(Connection connection, String companyId, String userId, int price, int quantity) {
         int tempPrice = 0, tempQuantity = 0;
         int totalPrice = tempPrice * tempQuantity;
         int totalQuantity = tempQuantity;
@@ -394,12 +429,12 @@ public class StockManagementDAO {
     public void writeGainOrLossToTable(Connection connection, String companyId, String userId, String gainOrLoss ) {
 
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM stock_details WHERE company_id = ? and customer_id = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM stockdetails WHERE company_id = ? and customer_id = ?");
             preparedStatement.setString(1,companyId);
             preparedStatement.setString(2,userId);
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.next()) {
-                preparedStatement = connection.prepareStatement("UPDATE stock_details SET gain = ? WHERE company_id = ? and customer_id = ?");
+                preparedStatement = connection.prepareStatement("UPDATE stockdetails SET gain = ? WHERE company_id = ? and customer_id = ?");
                 preparedStatement.setString(1, gainOrLoss);
                 int count = preparedStatement.executeUpdate();
                 if(count > 0) {
@@ -417,7 +452,7 @@ public class StockManagementDAO {
     public List<String> getTransactionReports(Connection connection, String userId, String status) {
         List<String> transactionReports = new ArrayList<>();
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM traderequest where userId = ? and status = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM traderequest where user_id = ? and status = ?");
             preparedStatement.setString(1,userId);
             preparedStatement.setString(2,status);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -440,7 +475,7 @@ public class StockManagementDAO {
     public List<CompanyStock> getCompanyList(Connection conn) {
         List<CompanyStock> companyStocks = new ArrayList<CompanyStock>();
         try {
-            PreparedStatement statement = conn.prepareStatement("Select company_id,price,available_quantity,share_type from CompanyStock order by created_time");
+            PreparedStatement statement = conn.prepareStatement("Select company_id,price,available_quantity,share_type from companystock order by created_time");
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
@@ -460,6 +495,82 @@ public class StockManagementDAO {
         }
     }
 
+    public void updateInProgressRequests(Connection connection) {
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT user_id, company_id, price, " +
+                    "quantity, action, request_id, batch_id FROM traderequest WHERE status = ? order by requested_time");
+            preparedStatement.setString(1, "failure");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String userId = resultSet.getString(1);
+                String companyId = resultSet.getString(2);
+                int price = resultSet.getInt(3);
+                int quantity = resultSet.getInt(4);
+                String action = resultSet.getString(5);
+                String requestId = resultSet.getString(6);
+                String batchId = resultSet.getString((7));
+                if (action.equals("buy"))
+                    UpdatePurchaseRequests(connection, userId, companyId, price, quantity, requestId);
+                else if (action.equals("sell"))
+                    updateSellRequests(connection, userId, companyId, price, quantity, requestId);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void UpdatePurchaseRequests(Connection connection, String userId, String companyId, int price,
+                                       int quantity, String requestId) {
+
+        int userBalance = getUserBalance(connection, userId);
+        if(!canUserPurchase(connection, companyId, quantity, userBalance)) {
+            return;
+        }
+        int availableStocks = checkAvailableStocks(connection, companyId);
+        if(availableStocks < quantity) {
+            return;
+        }
+        int updatedBalance = userBalance + (price * quantity);
+
+        int updatedStockQuantity = availableStocks - quantity;
+
+        updateUserBalance(connection, updatedBalance, userId);
+        updateCompanyStocks(connection, updatedStockQuantity, companyId);
+
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("Update traderequest set status = ? where request_id = ?");
+            preparedStatement.setString(1, "success");
+            preparedStatement.setString(2,requestId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    public void updateSellRequests(Connection connection, String userId, String companyId,
+                                   int price, int quantity, String requestId) {
+
+        int count = checkIfCompanyIsListedAtAskingPrice(connection, companyId, price, quantity);
+        int userBalance = getUserBalance(connection, userId);
+        int availableStocks = checkAvailableStocks(connection, companyId);
+        if(count > 0) {
+            try{
+                PreparedStatement preparedStatement = connection.prepareStatement("Update traderequest set status = ? where request_id = ?");
+                preparedStatement.setString(1, "success");
+                preparedStatement.setString(2,requestId);
+                preparedStatement.executeUpdate();
+
+                int updatedBalance = userBalance + price * quantity;
+                int updatedStockQuantity = availableStocks + quantity;
+                updateUserBalance(connection, updatedBalance, userId);
+                updateCompanyStocks(connection, updatedStockQuantity, companyId);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 }
 

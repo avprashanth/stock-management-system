@@ -21,14 +21,14 @@ public class Controller {
     static int num = 4;
     static Scanner myObj = new Scanner(System.in);
 
-    @PostMapping("/registerUser")     // create a body instread of multiple strings
+    @PostMapping("/registerUser")
     String registerUser(@RequestParam String userId, @RequestParam String password,
                         @RequestParam String address, @RequestParam String phoneNumber,
-                        @RequestParam String firstName, @RequestParam String lastName, @RequestParam String role) {
+                        @RequestParam String firstName, @RequestParam String lastName) {
         String response = "";
         try {
             Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
-            response = stockDao.registerUser(connection, userId, password, address, phoneNumber, firstName, lastName, role);
+            response = stockDao.registerUser(connection, userId, password, address, phoneNumber, firstName, lastName);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -72,6 +72,7 @@ public class Controller {
                 ExcelHelper.excelToCompanyStocks(file.getInputStream(), conn);
 
                 message = "Uploaded the file successfully: " + file.getOriginalFilename();
+                stockDao.updateInProgressRequests(conn);
                 return  message;
                 //return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
             } catch (Exception e) {
@@ -117,7 +118,7 @@ public class Controller {
         boolean response = false;
         try {
             Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
-            PreparedStatement statement = connection.prepareStatement("DELETE from TradeRequest where user_id = ? and request_id = ?");
+            PreparedStatement statement = connection.prepareStatement("DELETE from traderequest where user_id = ? and request_id = ?");
             statement.setString(1,userId);
             statement.setString(2, requestId);
             statement.executeQuery();
@@ -133,7 +134,7 @@ public class Controller {
         List<TradeRequest> tradeRequests = new ArrayList<TradeRequest>();
         try {
             Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
-            PreparedStatement statement = connection.prepareStatement("Select request_id,company_id,quantity from TradeRequest where user_id = ? and status = ? ");
+            PreparedStatement statement = connection.prepareStatement("Select request_id,company_id,quantity from traderequest where user_id = ? and status = ? ");
             statement.setString(1,userId);
             statement.setString(2,"In progress");
             ResultSet rs = statement.executeQuery();
@@ -153,36 +154,41 @@ public class Controller {
     }
 
     @PostMapping("/addBalance")
-    boolean addBalance(@RequestParam String userId,@RequestParam int balance) {
+    boolean addBalance(@RequestParam String userId, @RequestParam int amount) {
         boolean response = false;
         try {
-            if(balance < 0)
+            if(amount < 0)
                 return false;
             Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
-            PreparedStatement statement = connection.prepareStatement("SELECT acc_balance FROM Customer where customer_id =  ?");
+            PreparedStatement statement = connection.prepareStatement("SELECT acc_balance FROM customer where customer_id =  ?");
             statement.setString(1,userId);
+
             ResultSet rs = statement.executeQuery();
-            int accBalance = rs.getInt("acc_balance");
-            PreparedStatement updateStatement = connection.prepareStatement("UPDATE Customer SET acc_balance = ?");
-            statement.setInt(1,accBalance + balance);
-            statement.executeQuery();
+            int accBalance = 0;
+            if(rs.next()) accBalance  = rs.getInt("accountBalance");
+            else return false;
+            PreparedStatement updateStatement = connection.prepareStatement("UPDATE customer SET acc_balance = ? where customer_id = ?");
+            updateStatement.setInt(1,accBalance + amount);
+            updateStatement.setString(2,userId);
+            updateStatement.executeUpdate();
             return true;
         } catch (SQLException e) {
             throw new RuntimeException("Database error: " + e.getMessage());
         }
     }
 
-//    @PostMapping("/sellStocks")
-//    String sellStocks(@RequestParam String companyId, @RequestParam String price, @RequestParam int quantity, String userId) {
-//        String response = "";
-//        try {
-//            Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
-//            response = stockDao.performSell(connection, companyId, price, quantity, userId);
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        return response;
-//    }
+
+    @PostMapping("/sellStocks")
+    String sellStocks(@RequestParam String companyId, @RequestParam int price, @RequestParam int quantity,@RequestParam String userId,@RequestParam String batchId) {
+        String response = "";
+        try {
+            Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+            response = stockDao.performSell(connection, companyId, price, quantity, userId,batchId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
 
     @PostMapping("/transactionReport")
     List<String> getTransactionReport(@RequestParam String userId) {

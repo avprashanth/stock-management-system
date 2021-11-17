@@ -49,7 +49,7 @@ public class Controller {
         return response;
     }
 
-    @GetMapping("/stockBrokerLogin")
+    @PostMapping("/stockBrokerLogin")
     String stockBrokerLogin(@RequestParam String userId, @RequestParam String password) {
         String response = "";
         try {
@@ -203,7 +203,7 @@ public class Controller {
         return transactionReports;
     }
 
-    @GetMapping("/recommendations")
+    @PostMapping("/recommendations")
     ArrayList<String> getStock(@RequestParam String saferisk) throws SQLException {
         try {
             Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -278,7 +278,7 @@ public class Controller {
     }
 
 
-    @PostMapping("/portfolio")
+    @GetMapping("/portfolio")
     List<Portfolio> getPortfolioDetails(@RequestParam String userId) {
         List<Portfolio> getPortfolioDetails = new ArrayList<>();
         try{
@@ -291,9 +291,9 @@ public class Controller {
     }
 
 
-    @GetMapping("/companiesByUser")
-    List<CompanyStock> GetCompaniesByUserId(String userId) {
-        List<CompanyStock> res = null;
+    @PostMapping("/companiesByUser")
+    List<UserBatch> GetCompaniesByUserId(String userId) {
+        List<UserBatch> res = null;
         try {
             Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
@@ -305,32 +305,33 @@ public class Controller {
         return res;
     }
 
-    static List<CompanyStock> getUserCompanyList(Connection conn,String userId) {
+    static List<UserBatch> getUserCompanyList(Connection conn,String userId) {
         try {
-            PreparedStatement statement = conn.prepareStatement("select distinct t1.company_id from traderequest t1 where action = 'buy' and userId = ?" +
-                    "and t1.company_id IN ( select * from  traderequest t2 where action = 'sell'" +
-                    "and t2.batch_id = t1.batch_id" +
-                    "and t2.quantity < t1.quantity and userId = ?)" +
-                    "UNION" +
-                    "select distinct t1.company_id from traderequest t1 where action = 'buy' and userId = ?" +
-                    "and t1.company_id NOT IN ( select * from traderequest t2 where action = 'sell' and userId = ?)");
+            PreparedStatement statement = conn.prepareStatement("select distinct t1.company_id, t1.batch_id, t1.quantity, t1.price from traderequest t1 where status = 'success' and action = 'buy' and user_Id = ?" +
+                    " and t1.company_id IN ( select t2.company_id from  traderequest t2 where action = 'sell' " +
+                    " and t2.batch_id = t1.batch_id " +
+                    " and t2.quantity < t1.quantity and user_Id = ? and status = 'success')" +
+                    " UNION" +
+                    " select distinct t1.company_id, t1.batch_id, t1.quantity, t1.price from traderequest t1 where action = 'buy' " +
+                    " and user_Id = ? and status = 'success' " +
+                    " and t1.company_id NOT IN ( select t2.company_id from  traderequest t2 where action = 'sell' and user_Id = ? and status = 'success' )");
             statement.setString(1,userId);
             statement.setString(2,userId);
             statement.setString(3,userId);
             statement.setString(4,userId);
             ResultSet rs = statement.executeQuery();
-            List<CompanyStock> companyStocks = new ArrayList<CompanyStock>();
+            List<UserBatch> userStocks = new ArrayList<UserBatch>();
 
             while (rs.next()) {
-                String id = rs.getString("company_id");
+                String companyId = rs.getString("company_id");
+                String batchId = rs.getString("batch_id");
+                int quantity = rs.getInt("quantity");
                 int price = rs.getInt("price");
-                int quantity = rs.getInt("available_quantity");
+                UserBatch stock = new UserBatch(batchId,price,quantity,companyId);
 
-                CompanyStock stock = new CompanyStock(id,price,quantity);
-
-                companyStocks.add(stock);
+                userStocks.add(stock);
             }
-            return companyStocks;
+            return userStocks;
         } catch (SQLException e) {
             throw new RuntimeException("Database error: " + e.getMessage());
         }

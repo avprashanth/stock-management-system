@@ -99,7 +99,7 @@ public class StockManagementDAO {
     public String stockBrokerLogin(Connection connection, String userId, String password) {
         String response = "";
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("Select u.password from users u join stockbrokers  on u.user_id = s.broker_id where u.user_id = ?;");
+            PreparedStatement preparedStatement = connection.prepareStatement("Select u.password from users u join stockbroker s  on u.user_id = s.broker_id where u.user_id = ?;");
             preparedStatement.setString(1, userId);
             ResultSet rs = preparedStatement.executeQuery();
             String stored_password = "";

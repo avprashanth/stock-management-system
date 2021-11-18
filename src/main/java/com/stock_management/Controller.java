@@ -118,7 +118,7 @@ public class Controller {
         boolean response = false;
         try {
             Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
-            PreparedStatement statement = connection.prepareStatement("DELETE from traderequest where user_id = ? and request_id = ?");
+            PreparedStatement statement = connection.prepareStatement("DELETE from TradeRequest where user_id = ? and request_id = ?");
             statement.setString(1,userId);
             statement.setString(2, requestId);
             statement.executeQuery();
@@ -130,27 +130,29 @@ public class Controller {
 
     @GetMapping("/tradeRequestsInProgress")
     List<TradeRequest> getTradeRequestsInProgress(@RequestParam String userId) {
-
+        boolean response = false;
         List<TradeRequest> tradeRequests = new ArrayList<TradeRequest>();
         try {
             Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
-            PreparedStatement statement = connection.prepareStatement("Select request_id,company_id,quantity from traderequest where user_id = ? and status = ? ");
-            statement.setString(1,userId);
-            statement.setString(2,"In progress");
+            PreparedStatement statement = connection.prepareStatement("Select request_id,company_id,quantity,price from TradeRequest where user_id = ? and status = ? ");
+            statement.setString(1, userId);
+            statement.setString(2, "In progress");
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
                 String id = rs.getString("request_id");
                 String companyId = rs.getString("company_id");
                 int quantity = rs.getInt("quantity");
-
-                TradeRequest request = new TradeRequest(id,companyId,quantity);
+                String batch_id = rs.getString("batch_id");
+                int price = rs.getInt("price");
+                TradeRequest request = new TradeRequest(id, companyId, quantity, batch_id, price);
                 tradeRequests.add(request);
             }
             return tradeRequests;
         } catch (SQLException e) {
-            throw new RuntimeException("Database error: " + e.getMessage());
+            e.printStackTrace();
         }
+        return tradeRequests;
     }
 
     @PostMapping("/addBalance")
@@ -291,7 +293,7 @@ public class Controller {
     }
 
 
-    @PostMapping("/companiesByUser")
+    @GetMapping("/companiesByUser")
     List<UserBatch> GetCompaniesByUserId(String userId) {
         List<UserBatch> res = null;
         try {

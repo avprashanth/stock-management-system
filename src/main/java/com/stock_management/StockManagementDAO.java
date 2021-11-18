@@ -347,7 +347,7 @@ public class StockManagementDAO {
 
     public void updateUserBalance(Connection connection, int balance, String userId) {
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement("Update users set acc_balance = ? where customer_id = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("Update customer set acc_balance = ? where user_id = ?");
             preparedStatement.setString(1, String.valueOf(balance));
             preparedStatement.setString(2, userId);
             preparedStatement.executeUpdate();

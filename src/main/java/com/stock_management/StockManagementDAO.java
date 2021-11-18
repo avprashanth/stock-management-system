@@ -32,13 +32,20 @@ public class StockManagementDAO {
             preparedStatement.setString(4, phoneNumber);
             preparedStatement.setString(5, firstName);
             preparedStatement.setString(6, lastName);
-
+            connection.setAutoCommit(false);
             preparedStatement.executeUpdate();
 
             if(role.equals("Customer"))
-                updateCustomerTable(connection, username);
+                response = updateCustomerTable(connection, username);
             else if(role.equals("Admin")){
-                updateStockBrokerTable(connection, username);
+                response = updateStockBrokerTable(connection, username);
+            }
+
+            if(response.equals("success")) {
+                connection.commit();
+            } else {
+                response = "Failed to register. Please try again later";
+                return response;
             }
 
             logger.info("Inserted user");
@@ -50,25 +57,33 @@ public class StockManagementDAO {
         return response;
     }
 
-    void updateStockBrokerTable(Connection connection, String username) {
+    String updateStockBrokerTable(Connection connection, String username) {
+        String response = "";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO stockbroker VALUES (?);");
             preparedStatement.setString(1,username);
             preparedStatement.executeUpdate();
+            response = "success";
         }catch (SQLException e){
+            response = "failure";
             e.printStackTrace();
         }
+        return response;
     }
 
-    void updateCustomerTable(Connection connection, String username) {
+    String updateCustomerTable(Connection connection, String username) {
+        String response = "";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO customer VALUES (?, ?);");
             preparedStatement.setString(1,username);
             preparedStatement.setInt(2,0);
             preparedStatement.executeUpdate();
+            response = "success";
         }catch (SQLException e){
+            response = "fail";
             e.printStackTrace();
         }
+        return response;
     }
 
     static String validateUser(Connection conn, String userId, String password) {
@@ -87,7 +102,7 @@ public class StockManagementDAO {
                 response = "You are authenticated";
             }
             else {
-                response = "Authentication failed";
+                response = "Incorrect password. Authentication failed";
             }
         } catch (SQLException e) {
             response = "Unexpected error. Please try again later";
@@ -111,7 +126,7 @@ public class StockManagementDAO {
                 response = "You are authenticated";
             }
             else {
-                response = "Authentication failed";
+                response = "Incorrect password. Authentication failed";
             }
         } catch (SQLException e) {
             response = " Login Failed ";
@@ -144,6 +159,7 @@ public class StockManagementDAO {
             response = "Balance insufficient";
             return response;
         }
+        connection.setAutoCommit(false);
         int availableStocks = checkAvailableStocks(connection, companyId);
         if(availableStocks >= quantity) {
             String requestId = UUID.randomUUID().toString();
@@ -165,9 +181,15 @@ public class StockManagementDAO {
             statement1.setString(6, batchId);
             statement1.setString(7, userId);
             statement1.executeUpdate();
-            updateUserBalance(connection, userBalance - (price * quantity), userId);
-            updateCompanyStocks(connection, availableStocks - quantity, companyId);
-            response = "Transaction successful";
+            response = updateUserBalance(connection, userBalance - (price * quantity), userId);
+            if(!response.equals("success")) {
+                response = updateCompanyStocks(connection, availableStocks - quantity, companyId);
+            }
+
+            if(response.equals("success")) {
+                connection.commit();
+                response = "Transaction successful";
+            }
         } else {
             String requestId = UUID.randomUUID().toString();
             String status = "failure";
@@ -301,7 +323,6 @@ public class StockManagementDAO {
         } catch(SQLException e) {
             e.printStackTrace();
         }
-        System.out.println("&*&*&**" + balance);
         return balance;
     }
 
@@ -345,15 +366,19 @@ public class StockManagementDAO {
         }
     }
 
-    public void updateUserBalance(Connection connection, int balance, String userId) {
+    public String updateUserBalance(Connection connection, int balance, String userId) {
+        String response = "";
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement("Update customer set acc_balance = ? where user_id = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("Update customer set acc_balance = ? where customer_id = ?");
             preparedStatement.setString(1, String.valueOf(balance));
             preparedStatement.setString(2, userId);
             preparedStatement.executeUpdate();
+            response = "success";
         } catch (SQLException e) {
+            response = "fail";
             e.printStackTrace();
         }
+        return response;
     }
 
     public String getAvailableStocksOfUser(Connection connection, String requestId, String userId, String companyId) {
@@ -374,13 +399,16 @@ public class StockManagementDAO {
         return availableStocks;
     }
 
-    public void updateCompanyStocks(Connection connection, int availableStocks, String companyId) {
+    public String updateCompanyStocks(Connection connection, int availableStocks, String companyId) {
+        String response = "";
         String updateCompanyStocks = "Update Company set quantity = ? where company_id = ?";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(updateCompanyStocks);
             preparedStatement.setInt(1,availableStocks);
             preparedStatement.setString(2,companyId);
+            response = "success";
         } catch (SQLException e) {
+            response = "failure";
             e.printStackTrace();
         }
     }

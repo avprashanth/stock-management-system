@@ -118,7 +118,7 @@ public class Controller {
         boolean response = false;
         try {
             Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
-            PreparedStatement statement = connection.prepareStatement("DELETE from TradeRequest where user_id = ? and request_id = ?");
+            PreparedStatement statement = connection.prepareStatement("DELETE from traderequest where user_id = ? and request_id = ?");
             statement.setString(1,userId);
             statement.setString(2, requestId);
             statement.executeQuery();
@@ -134,9 +134,9 @@ public class Controller {
         List<TradeRequest> tradeRequests = new ArrayList<TradeRequest>();
         try {
             Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
-            PreparedStatement statement = connection.prepareStatement("Select request_id,company_id,quantity,price from TradeRequest where user_id = ? and status = ? ");
+            PreparedStatement statement = connection.prepareStatement("Select request_id,company_id,quantity,batch_id,price from traderequest where user_id = ? and status = ? ");
             statement.setString(1, userId);
-            statement.setString(2, "In progress");
+            statement.setString(2, "failure");
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {

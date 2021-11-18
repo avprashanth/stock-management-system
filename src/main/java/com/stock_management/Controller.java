@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-import com.stock_management.*;
 import java.sql.*;
 import java.util.*;
 
@@ -32,6 +31,8 @@ public class Controller {
             logger.info("inserted user" + userId);
         } catch (SQLException e) {
             e.printStackTrace();
+            logger.error(e.getMessage());
+            logger.info("insert new user in failed");
         }
         return response;
     }
@@ -45,6 +46,7 @@ public class Controller {
             logger.info("user logged in" + userId);
         } catch (SQLException e) {
             e.printStackTrace();
+            logger.error(e.getMessage());
         }
 
         return response;
@@ -56,9 +58,10 @@ public class Controller {
         try {
             Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
             response = stockDao.stockBrokerLogin(connection, userId, password);
-
+            logger.info("stockBrokerLogin:"+userId);
         } catch (SQLException e) {
             e.printStackTrace();
+            logger.error(e.getMessage());
         }
         return response;
     }
@@ -74,10 +77,12 @@ public class Controller {
 
                 message = "Uploaded the file successfully: " + file.getOriginalFilename();
                 stockDao.updateInProgressRequests(conn);
+                logger.info("upload by admin:"+message);
                 return  message;
                 //return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
             } catch (Exception e) {
                 message = "Could not upload the file: " + file.getOriginalFilename() + "!";
+                logger.info(message);
                 return message;
                 //return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
             }
@@ -85,7 +90,7 @@ public class Controller {
 
         message = "Please upload an excel file!";
         return message;
-       // return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage(message));
+        // return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage(message));
     }
 
     @GetMapping("/ListCompanies")
@@ -95,8 +100,9 @@ public class Controller {
             Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
             res = stockDao.getCompanyList(conn);
-
+            logger.info("listcompanies successful");
         } catch (SQLException e) {
+            logger.error(e.getMessage());
             e.printStackTrace();
         }
         return res;
@@ -108,8 +114,10 @@ public class Controller {
         try {
             Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
             response = stockDao.performBuy(connection, customerId, companyId, price, quantity);
+            logger.info(response);
         } catch (SQLException e) {
             e.printStackTrace();
+            logger.error(e.getMessage());
         }
         return response;
     }
@@ -123,6 +131,7 @@ public class Controller {
             statement.setString(1,userId);
             statement.setString(2, requestId);
             statement.executeUpdate();
+            logger.info("Request cancelled");
             return "Request cancelled";
         } catch (SQLException e) {
             throw new RuntimeException("Database error: " + e.getMessage());
@@ -149,9 +158,11 @@ public class Controller {
                 TradeRequest request = new TradeRequest(id, companyId, quantity, batch_id, price);
                 tradeRequests.add(request);
             }
+            logger.info("trade request list ");
             return tradeRequests;
         } catch (SQLException e) {
             e.printStackTrace();
+            logger.error(e.getMessage());
         }
         return tradeRequests;
     }
@@ -174,6 +185,7 @@ public class Controller {
             updateStatement.setInt(1,accBalance + amount);
             updateStatement.setString(2,userId);
             updateStatement.executeUpdate();
+            logger.info("added"+amount);
             return true;
         } catch (SQLException e) {
             throw new RuntimeException("Database error: " + e.getMessage());
@@ -190,6 +202,7 @@ public class Controller {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        logger.info(response);
         return response;
     }
 
@@ -200,8 +213,11 @@ public class Controller {
         try{
             Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
             transactionReports.addAll(stockDao.getTransactionReports(connection, userId, "Success"));
+            logger.info("success");
         } catch (SQLException e) {
+
             e.printStackTrace();
+            logger.error(e.getMessage());
         }
         return transactionReports;
     }
@@ -219,9 +235,11 @@ public class Controller {
                     values = new ArrayList<>();
                     values.add(stock.getPrice());
                     hm.put(stock.getCompany_id(), values);
+                    logger.info("one");
                 }
                 else {
                     hm.get(stock.getCompany_id()).add(stock.getPrice());
+                    logger.info("two");
                 }
             }
 
@@ -249,7 +267,7 @@ public class Controller {
                     res.add((String) me.getValue());
                     noofrecommendations--;
                 }
-
+                logger.info("three");
                 return res;
             }
             else {
@@ -273,6 +291,7 @@ public class Controller {
                     res.add((String) me.getValue());
                     noofrecommendations--;
                 }
+                logger.info("four");
                 return res;
             }
         } catch (SQLException e) {
@@ -287,8 +306,10 @@ public class Controller {
         try{
             Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
             getPortfolioDetails.addAll(stockDao.getPortfolioDetails(connection, userId));
+            logger.info("success");
         } catch (SQLException e) {
             e.printStackTrace();
+            logger.error(e.getMessage());
         }
         return getPortfolioDetails;
     }
@@ -301,9 +322,10 @@ public class Controller {
             Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
             res = getUserCompanyList(conn,userId);
-
+            logger.info("success");
         } catch (SQLException e) {
             e.printStackTrace();
+            logger.error(e.getMessage());
         }
         logger.info("inserted user");
         return res;
@@ -353,6 +375,7 @@ public class Controller {
                     userBatchList.add(new UserBatch(batchId, price, resQuantity, companyId));
                 }
             }
+            logger.info("success");
             return userBatchList;
         } catch (SQLException e) {
             throw new RuntimeException("Database error: " + e.getMessage());
@@ -368,8 +391,10 @@ public class Controller {
             balance = new UserBalance();
             int res = stockDao.getUserBalance(conn,userId);
             balance.setBalance(res);
+            logger.info("success");
         } catch (SQLException e) {
             e.printStackTrace();
+            logger.error(e.getMessage());
         }
         return balance;
     }

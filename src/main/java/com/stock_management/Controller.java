@@ -29,6 +29,7 @@ public class Controller {
         try {
             Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
             response = stockDao.registerUser(connection, userId, password, address, phoneNumber, firstName, lastName, role);
+            logger.info("inserted user" + userId);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -41,7 +42,7 @@ public class Controller {
         try {
             Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
             response = stockDao.validateUser(connection, userId, password);
-
+            logger.info("user logged in" + userId);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -121,7 +122,7 @@ public class Controller {
             PreparedStatement statement = connection.prepareStatement("DELETE from traderequest where user_id = ? and request_id = ?");
             statement.setString(1,userId);
             statement.setString(2, requestId);
-            statement.executeQuery();
+            statement.executeUpdate();
             return "Request cancelled";
         } catch (SQLException e) {
             throw new RuntimeException("Database error: " + e.getMessage());
@@ -304,6 +305,7 @@ public class Controller {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        logger.info("inserted user");
         return res;
     }
 

@@ -411,6 +411,7 @@ public class StockManagementDAO {
             response = "failure";
             e.printStackTrace();
         }
+        return response;
     }
 
 

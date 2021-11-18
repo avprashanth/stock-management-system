@@ -294,7 +294,7 @@ public class Controller {
 
 
     @GetMapping("/companiesByUser")
-    List<UserBatch> GetCompaniesByUserId(String userId) {
+    List<UserBatch> GetCompaniesByUserId(@RequestParam String userId) {
         List<UserBatch> res = null;
         try {
             Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -309,35 +309,54 @@ public class Controller {
 
     static List<UserBatch> getUserCompanyList(Connection conn,String userId) {
         try {
-            PreparedStatement statement = conn.prepareStatement("select distinct t1.company_id, t1.batch_id, t1.quantity, t1.price from traderequest t1 where status = 'success' and action = 'buy' and user_Id = ?" +
-                    " and t1.company_id IN ( select t2.company_id from  traderequest t2 where action = 'sell' " +
-                    " and t2.batch_id = t1.batch_id " +
-                    " and t2.quantity < t1.quantity and user_Id = ? and status = 'success')" +
-                    " UNION" +
-                    " select distinct t1.company_id, t1.batch_id, t1.quantity, t1.price from traderequest t1 where action = 'buy' " +
-                    " and user_Id = ? and status = 'success' " +
-                    " and t1.company_id NOT IN ( select t2.company_id from  traderequest t2 where action = 'sell' and user_Id = ? and status = 'success' )");
-            statement.setString(1,userId);
-            statement.setString(2,userId);
-            statement.setString(3,userId);
-            statement.setString(4,userId);
+            PreparedStatement statement = conn.prepareStatement("select distinct batch_id from traderequest where user_id = ?");
+            statement.setString(1, userId);
             ResultSet rs = statement.executeQuery();
-            List<UserBatch> userStocks = new ArrayList<UserBatch>();
-
-            while (rs.next()) {
-                String companyId = rs.getString("company_id");
-                String batchId = rs.getString("batch_id");
-                int quantity = rs.getInt("quantity");
-                int price = rs.getInt("price");
-                UserBatch stock = new UserBatch(batchId,price,quantity,companyId);
-
-                userStocks.add(stock);
+            List<String> batchIds = new ArrayList<>();
+            List<UserBatch> userBatchList = new ArrayList<>();
+            while(rs.next()) {
+                batchIds.add(rs.getString("batch_id"));
             }
-            return userStocks;
+            for(int i = 0; i < batchIds.size(); i++) {
+                int buyQuantity = 0;
+                int sellQuantity = 0;
+                int resQuantity = -1;
+                String batchId = batchIds.get(i);
+                PreparedStatement statement1 = conn.prepareStatement(
+                        "select quantity from traderequest where batch_id = ? and action = 'buy' and status = 'success'"
+                );
+                statement1.setString(1, batchId);
+                ResultSet res = statement1.executeQuery();
+                while(res.next()) {
+                    buyQuantity = buyQuantity + res.getInt("quantity");
+                }
+                PreparedStatement statement2 = conn.prepareStatement(
+                        "select quantity from traderequest where batch_id = ? and action = 'sell'"
+                );
+                statement2.setString(1, batchId);
+                ResultSet sellresult = statement2.executeQuery();
+                while(sellresult.next()) {
+                    sellQuantity = sellQuantity + sellresult.getInt("quantity");
+                }
+                resQuantity = buyQuantity - sellQuantity;
+                if(resQuantity > 0) {
+                    PreparedStatement statement3 = conn.prepareStatement(
+                            "select * from traderequest where batch_id = ? LIMIT 1"
+                    );
+                    statement3.setString(1, batchId);
+                    ResultSet result = statement3.executeQuery();
+                    result.next();
+                    int price = result.getInt("price");
+                    String companyId = result.getString("company_id");
+                    userBatchList.add(new UserBatch(batchId, price, resQuantity, companyId));
+                }
+            }
+            return userBatchList;
         } catch (SQLException e) {
             throw new RuntimeException("Database error: " + e.getMessage());
         }
     }
+
 
     @GetMapping("/getBalance")
     UserBalance GetBalance(@RequestParam String userId) {

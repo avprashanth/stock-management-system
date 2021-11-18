@@ -13,10 +13,6 @@ import java.util.UUID;
 @Repository
 public class StockManagementDAO {
     static Logger logger = Logger.getLogger(StockManagementDAO.class.getName());
-    static final String DB_URL = "jdbc:mysql://10.0.0.199:3306/stock_management_db";
-    static final String USER = "root";
-    static final String PASS = "root";
-    static Scanner myObj = new Scanner(System.in);
 
     static SHA512Hasher hashObj = new SHA512Hasher();
 
@@ -182,7 +178,7 @@ public class StockManagementDAO {
             statement1.setString(7, userId);
             statement1.executeUpdate();
             response = updateUserBalance(connection, userBalance - (price * quantity), userId);
-            if(!response.equals("success")) {
+            if(response.equals("success")) {
                 response = updateCompanyStocks(connection, availableStocks - quantity, companyId);
             }
 
@@ -239,6 +235,7 @@ public class StockManagementDAO {
         statement1.setString(1, userId);
         statement1.setString(2, companyId);
         statement1.setString(3, batchId);
+        connection.setAutoCommit(false);
         ResultSet resultSet = statement1.executeQuery();
         int soldStocks = 0;
         while (resultSet.next())

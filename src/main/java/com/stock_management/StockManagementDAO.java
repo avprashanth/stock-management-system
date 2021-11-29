@@ -2,8 +2,6 @@ package com.stock_management;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
-
-import java.net.ConnectException;
 import java.sql.*;
 import java.sql.Date;
 import java.util.*;
@@ -26,7 +24,7 @@ public class StockManagementDAO {
             preparedStatement.setString(4, phoneNumber);
             preparedStatement.setString(5, firstName);
             preparedStatement.setString(6, lastName);
-            connection.setAutoCommit(false);
+//            connection.setAutoCommit(false);
             preparedStatement.executeUpdate();
 
             if(role.equals("Customer"))
@@ -36,7 +34,7 @@ public class StockManagementDAO {
             }
 
             if(response.equals("success")) {
-                connection.commit();
+//                connection.commit();
             } else {
                 response = "Failed to register. Please try again later";
                 return response;
@@ -153,7 +151,7 @@ public class StockManagementDAO {
             response = "Balance insufficient";
             return response;
         }
-        connection.setAutoCommit(false);
+//        connection.setAutoCommit(false);
         int availableStocks = checkAvailableStocks(connection, companyId);
         if(availableStocks >= quantity) {
             String requestId = UUID.randomUUID().toString();
@@ -181,7 +179,7 @@ public class StockManagementDAO {
             }
 
             if(response.equals("success")) {
-                connection.commit();
+//                connection.commit();
                 response = "Transaction successful";
             }
         } else {
@@ -233,7 +231,7 @@ public class StockManagementDAO {
         statement1.setString(1, userId);
         statement1.setString(2, companyId);
         statement1.setString(3, batchId);
-        connection.setAutoCommit(false);
+//        connection.setAutoCommit(false);
         ResultSet resultSet = statement1.executeQuery();
         int soldStocks = 0;
         while (resultSet.next())
@@ -261,7 +259,7 @@ public class StockManagementDAO {
             statement2.setString(7, userId);
             statement2.executeUpdate();
             if(status.equals("success")){
-                connection.commit();
+//                connection.commit();
                 updateUserBalance(connection, userBalance + (price * quantity), userId);
             }
             updateCompanyStocks(connection, availableStocks + quantity, companyId);
@@ -281,7 +279,7 @@ public class StockManagementDAO {
             rs.next();
             int buyprice = rs.getInt("price");
             int gain = (price - buyprice) * quantity;
-            String insertDetails = "insert into stockdetails values (?, ?, ?)";
+            String insertDetails = "insert into StockDetails values (?, ?, ?)";
             PreparedStatement statement4 = connection.prepareStatement(insertDetails);
             statement4.setString(1, userId);
             statement4.setString(2, companyId);
@@ -465,12 +463,12 @@ public class StockManagementDAO {
     public void writeGainOrLossToTable(Connection connection, String companyId, String userId, String gainOrLoss ) {
 
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM stockdetails WHERE company_id = ? and customer_id = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM StockDetails WHERE company_id = ? and customer_id = ?");
             preparedStatement.setString(1,companyId);
             preparedStatement.setString(2,userId);
             ResultSet resultSet = preparedStatement.executeQuery();
             while(resultSet.next()) {
-                preparedStatement = connection.prepareStatement("UPDATE stockdetails SET gain = ? WHERE company_id = ? and customer_id = ?");
+                preparedStatement = connection.prepareStatement("UPDATE StockDetails SET gain = ? WHERE company_id = ? and customer_id = ?");
                 preparedStatement.setString(1, gainOrLoss);
                 int count = preparedStatement.executeUpdate();
                 if(count > 0) {
@@ -608,7 +606,7 @@ public class StockManagementDAO {
     public List<Portfolio> getPortfolioDetails(Connection connection, String userId) {
         List<Portfolio> resultList = new ArrayList<>();
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement("Select * from stockdetails where customer_id = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("Select * from StockDetails where customer_id = ?");
             preparedStatement.setString(1, userId);
             ResultSet resultSet = preparedStatement.executeQuery();
             while(resultSet.next()) {

@@ -3047,3 +3047,89 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 2021-11-28 17:06:53 INFO  Main:330 - inserted user
 2021-11-28 17:08:35 INFO  Main:216 - success
 2021-11-28 17:08:48 INFO  Main:103 - listcompanies successful
+2021-11-28 17:13:45 INFO  Main:309 - success
+2021-11-28 17:13:52 INFO  Main:378 - success
+2021-11-28 17:13:52 INFO  Main:325 - success
+2021-11-28 17:13:52 INFO  Main:330 - inserted user
+2021-11-28 17:14:18 INFO  Main:378 - success
+2021-11-28 17:14:18 INFO  Main:325 - success
+2021-11-28 17:14:18 INFO  Main:330 - inserted user
+2021-11-28 17:14:18 INFO  Main:197 - sell chestunna
+2021-11-28 17:14:18 INFO  Main:205 - Transaction successful
+2021-11-28 17:14:20 INFO  Main:378 - success
+2021-11-28 17:14:20 INFO  Main:325 - success
+2021-11-28 17:14:20 INFO  Main:330 - inserted user
+2021-11-28 17:14:23 INFO  Main:309 - success
+2021-11-28 17:14:30 INFO  Main:309 - success
+2021-11-28 17:14:31 INFO  Main:216 - success
+2021-11-28 17:14:37 INFO  Main:309 - success
+2021-11-28 17:16:16 INFO  Main:309 - success
+2021-11-28 17:16:18 INFO  Main:216 - success
+2021-11-28 17:16:19 INFO  Main:309 - success
+2021-11-28 17:20:04 INFO  Main:309 - success
+2021-11-28 17:20:05 INFO  Main:216 - success
+2021-11-28 17:21:57 INFO  Main:309 - success
+2021-11-28 17:22:50 INFO  Main:103 - listcompanies successful
+2021-11-28 17:23:04 INFO  Main:103 - listcompanies successful
+2021-11-28 17:23:05 INFO  Main:117 - Transaction successful
+2021-11-28 17:23:07 INFO  Main:378 - success
+2021-11-28 17:23:07 INFO  Main:325 - success
+2021-11-28 17:23:07 INFO  Main:330 - inserted user
+2021-11-28 17:23:35 INFO  Main:378 - success
+2021-11-28 17:23:35 INFO  Main:325 - success
+2021-11-28 17:23:35 INFO  Main:330 - inserted user
+2021-11-28 17:23:35 INFO  Main:197 - sell chestunna
+2021-11-28 17:23:35 INFO  Main:205 - Transaction successful
+2021-11-28 17:23:38 INFO  Main:378 - success
+2021-11-28 17:23:38 INFO  Main:325 - success
+2021-11-28 17:23:38 INFO  Main:330 - inserted user
+2021-11-28 17:23:44 INFO  Main:309 - success
+2021-11-28 17:26:24 INFO  Main:378 - success
+2021-11-28 17:26:24 INFO  Main:325 - success
+2021-11-28 17:26:24 INFO  Main:330 - inserted user
+2021-11-28 17:26:45 INFO  Main:378 - success
+2021-11-28 17:26:45 INFO  Main:325 - success
+2021-11-28 17:26:45 INFO  Main:330 - inserted user
+2021-11-28 17:26:45 INFO  Main:197 - sell chestunna
+2021-11-28 17:26:45 INFO  Main:205 - Transaction successful
+2021-11-28 17:26:46 INFO  Main:378 - success
+2021-11-28 17:26:46 INFO  Main:325 - success
+2021-11-28 17:26:46 INFO  Main:330 - inserted user
+2021-11-28 17:26:53 INFO  Main:309 - success
+2021-11-28 17:26:55 INFO  Main:216 - success
+2021-11-28 17:27:42 INFO  Main:378 - success
+2021-11-28 17:27:42 INFO  Main:325 - success
+2021-11-28 17:27:42 INFO  Main:330 - inserted user
+2021-11-28 17:28:13 INFO  Main:378 - success
+2021-11-28 17:28:13 INFO  Main:325 - success
+2021-11-28 17:28:13 INFO  Main:330 - inserted user
+2021-11-28 17:28:13 INFO  Main:197 - sell chestunna
+2021-11-28 17:30:06 INFO  Main:205 - 
+2021-11-28 17:30:06 INFO  Main:378 - success
+2021-11-28 17:30:06 INFO  Main:325 - success
+2021-11-28 17:30:06 INFO  Main:330 - inserted user
+2021-11-28 17:33:06 INFO  Main:378 - success
+2021-11-28 17:33:06 INFO  Main:325 - success
+2021-11-28 17:33:06 INFO  Main:330 - inserted user
+2021-11-28 17:33:06 INFO  Main:197 - sell chestunna
+2021-11-28 17:33:06 INFO  Main:205 - Transaction successful
+2021-11-28 17:33:07 INFO  Main:378 - success
+2021-11-28 17:33:07 INFO  Main:325 - success
+2021-11-28 17:33:07 INFO  Main:330 - inserted user
+2021-11-28 17:33:14 INFO  Main:309 - success
+2021-11-28 17:33:44 INFO  Main:378 - success
+2021-11-28 17:33:44 INFO  Main:325 - success
+2021-11-28 17:33:44 INFO  Main:330 - inserted user
+2021-11-28 17:33:58 INFO  Main:378 - success
+2021-11-28 17:33:58 INFO  Main:325 - success
+2021-11-28 17:33:58 INFO  Main:330 - inserted user
+2021-11-28 17:33:58 INFO  Main:197 - sell chestunna
+2021-11-28 17:33:59 INFO  Main:205 - 
+2021-11-28 17:34:00 INFO  Main:378 - success
+2021-11-28 17:34:00 INFO  Main:325 - success
+2021-11-28 17:34:00 INFO  Main:330 - inserted user
+2021-11-28 17:34:03 INFO  Main:309 - success
+2021-11-28 17:35:06 INFO  Main:309 - success
+2021-11-28 17:35:11 INFO  Main:378 - success
+2021-11-28 17:35:11 INFO  Main:325 - success
+2021-11-28 17:35:11 INFO  Main:330 - inserted user

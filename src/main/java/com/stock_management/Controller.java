@@ -14,9 +14,9 @@ public class Controller {
 
     StockManagementDAO stockDao = new StockManagementDAO();
     static Logger logger = Logger.getLogger(Main.class.getName());
-    static final String DB_URL = "jdbc:mysql://10.0.0.199/stock_management_db";
+    static final String DB_URL = "jdbc:mysql://localhost:3306/StockManagementDb";
     static final String USER = "root";
-    static final String PASS = "root";
+    static final String PASS = "password";
     static int num = 4;
     static Scanner myObj = new Scanner(System.in);
 

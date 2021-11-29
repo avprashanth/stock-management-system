@@ -488,15 +488,16 @@ public class StockManagementDAO {
     public List<TransactionReport> getTransactionReports(Connection connection, String userId) {
         List<TransactionReport> transactionReports = new ArrayList<>();
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT company_id, action, price, status,  FROM traderequest where user_id = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT company_id, action, quantity, price, status FROM traderequest where user_id = ?");
             preparedStatement.setString(1,userId);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                String companyId = resultSet.getString(2);
-                String action = resultSet.getString(3);
+                String companyId = resultSet.getString(1);
+                String action = resultSet.getString(2);
+                int quantity = resultSet.getInt(3);
                 int price = resultSet.getInt(4);
                 String status = resultSet.getString(5);
-                TransactionReport report = new TransactionReport(userId, companyId, action, price, status);
+                TransactionReport report = new TransactionReport(userId, companyId, action, quantity, price, status);
                 transactionReports.add(report);
             }
         } catch (SQLException e) {

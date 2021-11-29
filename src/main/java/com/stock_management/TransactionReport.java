@@ -44,16 +44,27 @@ public class TransactionReport {
         this.status = status;
     }
 
-    public TransactionReport(String userId, String companyId, String action, int price, String status) {
+    public TransactionReport(String userId, String companyId, String action, int quantity, int price, String status) {
         this.userId = userId;
         this.companyId = companyId;
         this.action = action;
+        this.quantity = quantity;
         this.price = price;
         this.status = status;
     }
 
     private String companyId;
     private String action;
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    private int quantity;
     private int price;
     private String status;
 

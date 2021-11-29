@@ -300,7 +300,7 @@ public class Controller {
     }
 
 
-    @GetMapping("/portfolio")
+    @PostMapping("/portfolio")
     List<Portfolio> getPortfolioDetails(@RequestParam String userId) {
         List<Portfolio> getPortfolioDetails = new ArrayList<>();
         try{

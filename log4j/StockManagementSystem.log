@@ -3038,3 +3038,12 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 2021-11-28 16:51:37 INFO  Main:325 - success
 2021-11-28 16:51:37 INFO  Main:330 - inserted user
 2021-11-28 16:52:20 INFO  Main:216 - success
+2021-11-28 17:05:44 INFO  Main:103 - listcompanies successful
+2021-11-28 17:05:47 INFO  Main:216 - success
+2021-11-28 17:06:10 INFO  Main:216 - success
+2021-11-28 17:06:42 INFO  Main:103 - listcompanies successful
+2021-11-28 17:06:53 INFO  Main:378 - success
+2021-11-28 17:06:53 INFO  Main:325 - success
+2021-11-28 17:06:53 INFO  Main:330 - inserted user
+2021-11-28 17:08:35 INFO  Main:216 - success
+2021-11-28 17:08:48 INFO  Main:103 - listcompanies successful

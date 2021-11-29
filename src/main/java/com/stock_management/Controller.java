@@ -207,12 +207,12 @@ public class Controller {
     }
 
     @PostMapping("/transactionReport")
-    List<String> getTransactionReport(@RequestParam String userId) {
+    List<TransactionReport> getTransactionReport(@RequestParam String userId) {
 
-        List<String> transactionReports = new ArrayList<>();
+        List<TransactionReport> transactionReports = new ArrayList<>();
         try{
             Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
-            transactionReports.addAll(stockDao.getTransactionReports(connection, userId, "Success"));
+            transactionReports.addAll(stockDao.getTransactionReports(connection, userId));
             logger.info("success");
         } catch (SQLException e) {
 

@@ -5,10 +5,8 @@ import org.springframework.stereotype.Repository;
 
 import java.net.ConnectException;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.UUID;
+import java.sql.Date;
+import java.util.*;
 
 @Repository
 public class StockManagementDAO {
@@ -262,8 +260,10 @@ public class StockManagementDAO {
             statement2.setString(6, batchId);
             statement2.setString(7, userId);
             statement2.executeUpdate();
-            if(status.equals("success"))
+            if(status.equals("success")){
+                connection.commit();
                 updateUserBalance(connection, userBalance + (price * quantity), userId);
+            }
             updateCompanyStocks(connection, availableStocks + quantity, companyId);
             response = "Transaction successful";
         }
@@ -398,11 +398,12 @@ public class StockManagementDAO {
 
     public String updateCompanyStocks(Connection connection, int availableStocks, String companyId) {
         String response = "";
-        String updateCompanyStocks = "Update Company set quantity = ? where company_id = ?";
+        String updateCompanyStocks = "Update companystock set available_quantity = ? where company_id = ?";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(updateCompanyStocks);
             preparedStatement.setInt(1,availableStocks);
             preparedStatement.setString(2,companyId);
+            preparedStatement.executeUpdate();
             response = "success";
         } catch (SQLException e) {
             response = "failure";
@@ -491,14 +492,16 @@ public class StockManagementDAO {
             preparedStatement.setString(1,userId);
             preparedStatement.setString(2,status);
             ResultSet resultSet = preparedStatement.executeQuery();
+
+            ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
+            final int columnCount = resultSetMetaData.getColumnCount();
+
             while (resultSet.next()) {
-                String row = "";
-                int i=0;
-                while (resultSet.getString(i) != null) {
-                    row += resultSet.getString(i) + ", ";
-                    i++;
+                Object[] values = new Object[columnCount];
+                for (int i = 1; i <= columnCount; i++) {
+                    values[i - 1] = resultSet.getObject(i);
                 }
-                transactionReports.add(row);
+                transactionReports.add(Arrays.toString(values));
             }
         } catch (SQLException e) {
             e.printStackTrace();

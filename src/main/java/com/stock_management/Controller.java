@@ -192,9 +192,9 @@ public class Controller {
         }
     }
 
-
     @PostMapping("/sellStocks")
     String sellStocks(@RequestParam String companyId, @RequestParam int price, @RequestParam int quantity,@RequestParam String userId,@RequestParam String batchId) {
+        logger.info("sell chestunna");
         String response = "";
         try {
             Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);

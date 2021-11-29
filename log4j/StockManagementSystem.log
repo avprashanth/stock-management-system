@@ -1,1 +1,862 @@
 2021-11-17 18:34:34 INFO  Main:308 - inserted user
+2021-11-28 14:14:04 INFO  StockManagementDAO:47 - Inserted user
+2021-11-28 14:14:04 INFO  Main:31 - inserted usersrm@g.com
+2021-11-28 14:14:18 INFO  Main:46 - user logged insrm@g.com
+2021-11-28 14:14:28 INFO  Main:394 - success
+2021-11-28 14:14:43 INFO  Main:394 - success
+2021-11-28 14:14:44 INFO  Main:188 - added1000
+2021-11-28 14:15:06 INFO  Main:394 - success
+2021-11-28 14:15:06 INFO  Main:188 - added500
+2021-11-28 14:15:43 INFO  Main:394 - success
+2021-11-28 14:16:09 INFO  Main:103 - listcompanies successful
+2021-11-28 14:16:50 INFO  Main:103 - listcompanies successful
+2021-11-28 14:16:50 INFO  Main:117 - Balance insufficient
+2021-11-28 14:17:24 INFO  Main:103 - listcompanies successful
+2021-11-28 14:17:24 INFO  Main:117 - Transaction successful
+2021-11-28 14:19:57 INFO  Main:103 - listcompanies successful
+2021-11-28 14:19:58 INFO  Main:117 - Transaction successful
+2021-11-28 14:20:22 INFO  Main:103 - listcompanies successful
+2021-11-28 14:20:29 INFO  Main:117 - Transaction successful
+2021-11-28 14:20:37 INFO  Main:378 - success
+2021-11-28 14:20:37 INFO  Main:325 - success
+2021-11-28 14:20:37 INFO  Main:330 - inserted user
+2021-11-28 14:21:41 INFO  Main:378 - success
+2021-11-28 14:21:41 INFO  Main:325 - success
+2021-11-28 14:21:41 INFO  Main:330 - inserted user
+2021-11-28 14:21:47 INFO  Main:205 - Transaction successful
+2021-11-28 14:21:59 INFO  Main:103 - listcompanies successful
+2021-11-28 14:22:06 INFO  Main:378 - success
+2021-11-28 14:22:06 INFO  Main:325 - success
+2021-11-28 14:22:06 INFO  Main:330 - inserted user
+2021-11-28 14:22:36 INFO  Main:378 - success
+2021-11-28 14:22:36 INFO  Main:325 - success
+2021-11-28 14:22:36 INFO  Main:330 - inserted user
+2021-11-28 14:22:37 INFO  Main:205 - Transaction successful
+2021-11-28 14:25:10 INFO  Main:378 - success
+2021-11-28 14:25:10 INFO  Main:325 - success
+2021-11-28 14:25:10 INFO  Main:330 - inserted user
+2021-11-28 14:26:00 INFO  Main:205 - 
+2021-11-28 14:29:52 INFO  Main:161 - trade request list 
+2021-11-28 14:30:00 INFO  Main:394 - success
+2021-11-28 14:30:03 INFO  Main:161 - trade request list 
+2021-11-28 14:30:10 INFO  Main:378 - success
+2021-11-28 14:30:10 INFO  Main:325 - success
+2021-11-28 14:30:10 INFO  Main:330 - inserted user
+2021-11-28 14:35:15 INFO  Main:238 - one
+2021-11-28 14:35:15 INFO  Main:238 - one
+2021-11-28 14:35:15 INFO  Main:238 - one
+2021-11-28 14:35:15 INFO  Main:238 - one
+2021-11-28 14:35:15 INFO  Main:238 - one
+2021-11-28 14:35:15 INFO  Main:238 - one
+2021-11-28 14:35:15 INFO  Main:238 - one
+2021-11-28 14:35:15 INFO  Main:238 - one
+2021-11-28 14:35:15 INFO  Main:238 - one
+2021-11-28 14:35:15 INFO  Main:238 - one
+2021-11-28 14:35:15 INFO  Main:238 - one
+2021-11-28 14:35:15 INFO  Main:238 - one
+2021-11-28 14:35:15 INFO  Main:238 - one
+2021-11-28 14:35:15 INFO  Main:238 - one
+2021-11-28 14:35:15 INFO  Main:238 - one
+2021-11-28 14:35:15 INFO  Main:238 - one
+2021-11-28 14:35:15 INFO  Main:238 - one
+2021-11-28 14:35:15 INFO  Main:238 - one
+2021-11-28 14:35:15 INFO  Main:238 - one
+2021-11-28 14:35:15 INFO  Main:238 - one
+2021-11-28 14:35:15 INFO  Main:242 - two
+2021-11-28 14:35:15 INFO  Main:238 - one
+2021-11-28 14:35:15 INFO  Main:238 - one
+2021-11-28 14:35:15 INFO  Main:238 - one
+2021-11-28 14:35:15 INFO  Main:238 - one
+2021-11-28 14:35:15 INFO  Main:238 - one
+2021-11-28 14:35:15 INFO  Main:238 - one
+2021-11-28 14:35:15 INFO  Main:238 - one
+2021-11-28 14:35:15 INFO  Main:238 - one
+2021-11-28 14:35:15 INFO  Main:238 - one
+2021-11-28 14:35:15 INFO  Main:238 - one
+2021-11-28 14:35:15 INFO  Main:238 - one
+2021-11-28 14:35:15 INFO  Main:294 - four
+2021-11-28 14:35:19 INFO  Main:238 - one
+2021-11-28 14:35:19 INFO  Main:238 - one
+2021-11-28 14:35:19 INFO  Main:238 - one
+2021-11-28 14:35:19 INFO  Main:238 - one
+2021-11-28 14:35:19 INFO  Main:238 - one
+2021-11-28 14:35:19 INFO  Main:238 - one
+2021-11-28 14:35:19 INFO  Main:238 - one
+2021-11-28 14:35:19 INFO  Main:238 - one
+2021-11-28 14:35:19 INFO  Main:238 - one
+2021-11-28 14:35:19 INFO  Main:238 - one
+2021-11-28 14:35:19 INFO  Main:238 - one
+2021-11-28 14:35:19 INFO  Main:238 - one
+2021-11-28 14:35:19 INFO  Main:238 - one
+2021-11-28 14:35:19 INFO  Main:238 - one
+2021-11-28 14:35:19 INFO  Main:238 - one
+2021-11-28 14:35:19 INFO  Main:238 - one
+2021-11-28 14:35:19 INFO  Main:238 - one
+2021-11-28 14:35:19 INFO  Main:238 - one
+2021-11-28 14:35:19 INFO  Main:238 - one
+2021-11-28 14:35:19 INFO  Main:238 - one
+2021-11-28 14:35:19 INFO  Main:242 - two
+2021-11-28 14:35:19 INFO  Main:238 - one
+2021-11-28 14:35:19 INFO  Main:238 - one
+2021-11-28 14:35:19 INFO  Main:238 - one
+2021-11-28 14:35:19 INFO  Main:238 - one
+2021-11-28 14:35:19 INFO  Main:238 - one
+2021-11-28 14:35:19 INFO  Main:238 - one
+2021-11-28 14:35:19 INFO  Main:238 - one
+2021-11-28 14:35:19 INFO  Main:238 - one
+2021-11-28 14:35:19 INFO  Main:238 - one
+2021-11-28 14:35:19 INFO  Main:238 - one
+2021-11-28 14:35:19 INFO  Main:238 - one
+2021-11-28 14:35:19 INFO  Main:270 - three
+2021-11-28 14:35:20 INFO  Main:238 - one
+2021-11-28 14:35:20 INFO  Main:238 - one
+2021-11-28 14:35:20 INFO  Main:238 - one
+2021-11-28 14:35:20 INFO  Main:238 - one
+2021-11-28 14:35:20 INFO  Main:238 - one
+2021-11-28 14:35:20 INFO  Main:238 - one
+2021-11-28 14:35:20 INFO  Main:238 - one
+2021-11-28 14:35:20 INFO  Main:238 - one
+2021-11-28 14:35:20 INFO  Main:238 - one
+2021-11-28 14:35:20 INFO  Main:238 - one
+2021-11-28 14:35:20 INFO  Main:238 - one
+2021-11-28 14:35:20 INFO  Main:238 - one
+2021-11-28 14:35:20 INFO  Main:238 - one
+2021-11-28 14:35:20 INFO  Main:238 - one
+2021-11-28 14:35:20 INFO  Main:238 - one
+2021-11-28 14:35:20 INFO  Main:238 - one
+2021-11-28 14:35:20 INFO  Main:238 - one
+2021-11-28 14:35:20 INFO  Main:238 - one
+2021-11-28 14:35:20 INFO  Main:238 - one
+2021-11-28 14:35:20 INFO  Main:238 - one
+2021-11-28 14:35:20 INFO  Main:242 - two
+2021-11-28 14:35:20 INFO  Main:238 - one
+2021-11-28 14:35:20 INFO  Main:238 - one
+2021-11-28 14:35:20 INFO  Main:238 - one
+2021-11-28 14:35:20 INFO  Main:238 - one
+2021-11-28 14:35:20 INFO  Main:238 - one
+2021-11-28 14:35:20 INFO  Main:238 - one
+2021-11-28 14:35:20 INFO  Main:238 - one
+2021-11-28 14:35:20 INFO  Main:238 - one
+2021-11-28 14:35:20 INFO  Main:238 - one
+2021-11-28 14:35:20 INFO  Main:238 - one
+2021-11-28 14:35:20 INFO  Main:238 - one
+2021-11-28 14:35:20 INFO  Main:270 - three
+2021-11-28 14:35:38 INFO  Main:238 - one
+2021-11-28 14:35:38 INFO  Main:238 - one
+2021-11-28 14:35:38 INFO  Main:238 - one
+2021-11-28 14:35:38 INFO  Main:238 - one
+2021-11-28 14:35:38 INFO  Main:238 - one
+2021-11-28 14:35:38 INFO  Main:238 - one
+2021-11-28 14:35:38 INFO  Main:238 - one
+2021-11-28 14:35:38 INFO  Main:238 - one
+2021-11-28 14:35:38 INFO  Main:238 - one
+2021-11-28 14:35:38 INFO  Main:238 - one
+2021-11-28 14:35:38 INFO  Main:238 - one
+2021-11-28 14:35:38 INFO  Main:238 - one
+2021-11-28 14:35:38 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:242 - two
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:294 - four
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:242 - two
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:270 - three
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:242 - two
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:238 - one
+2021-11-28 14:35:39 INFO  Main:270 - three
+2021-11-28 14:38:04 INFO  Main:238 - one
+2021-11-28 14:38:04 INFO  Main:238 - one
+2021-11-28 14:38:04 INFO  Main:238 - one
+2021-11-28 14:38:04 INFO  Main:238 - one
+2021-11-28 14:38:04 INFO  Main:238 - one
+2021-11-28 14:38:04 INFO  Main:238 - one
+2021-11-28 14:38:04 INFO  Main:238 - one
+2021-11-28 14:38:04 INFO  Main:238 - one
+2021-11-28 14:38:04 INFO  Main:238 - one
+2021-11-28 14:38:04 INFO  Main:238 - one
+2021-11-28 14:38:04 INFO  Main:238 - one
+2021-11-28 14:38:04 INFO  Main:238 - one
+2021-11-28 14:38:04 INFO  Main:238 - one
+2021-11-28 14:38:04 INFO  Main:238 - one
+2021-11-28 14:38:04 INFO  Main:238 - one
+2021-11-28 14:38:04 INFO  Main:238 - one
+2021-11-28 14:38:04 INFO  Main:238 - one
+2021-11-28 14:38:04 INFO  Main:238 - one
+2021-11-28 14:38:04 INFO  Main:238 - one
+2021-11-28 14:38:04 INFO  Main:238 - one
+2021-11-28 14:38:04 INFO  Main:242 - two
+2021-11-28 14:38:04 INFO  Main:238 - one
+2021-11-28 14:38:04 INFO  Main:238 - one
+2021-11-28 14:38:04 INFO  Main:238 - one
+2021-11-28 14:38:04 INFO  Main:238 - one
+2021-11-28 14:38:04 INFO  Main:238 - one
+2021-11-28 14:38:04 INFO  Main:238 - one
+2021-11-28 14:38:04 INFO  Main:238 - one
+2021-11-28 14:38:04 INFO  Main:238 - one
+2021-11-28 14:38:04 INFO  Main:238 - one
+2021-11-28 14:38:04 INFO  Main:238 - one
+2021-11-28 14:38:04 INFO  Main:238 - one
+2021-11-28 14:38:04 INFO  Main:270 - three
+2021-11-28 14:38:05 INFO  Main:238 - one
+2021-11-28 14:38:05 INFO  Main:238 - one
+2021-11-28 14:38:05 INFO  Main:238 - one
+2021-11-28 14:38:05 INFO  Main:238 - one
+2021-11-28 14:38:05 INFO  Main:238 - one
+2021-11-28 14:38:05 INFO  Main:238 - one
+2021-11-28 14:38:05 INFO  Main:238 - one
+2021-11-28 14:38:05 INFO  Main:238 - one
+2021-11-28 14:38:05 INFO  Main:238 - one
+2021-11-28 14:38:05 INFO  Main:238 - one
+2021-11-28 14:38:05 INFO  Main:238 - one
+2021-11-28 14:38:05 INFO  Main:238 - one
+2021-11-28 14:38:05 INFO  Main:238 - one
+2021-11-28 14:38:05 INFO  Main:238 - one
+2021-11-28 14:38:05 INFO  Main:238 - one
+2021-11-28 14:38:05 INFO  Main:238 - one
+2021-11-28 14:38:05 INFO  Main:238 - one
+2021-11-28 14:38:05 INFO  Main:238 - one
+2021-11-28 14:38:05 INFO  Main:238 - one
+2021-11-28 14:38:05 INFO  Main:238 - one
+2021-11-28 14:38:05 INFO  Main:242 - two
+2021-11-28 14:38:05 INFO  Main:238 - one
+2021-11-28 14:38:05 INFO  Main:238 - one
+2021-11-28 14:38:05 INFO  Main:238 - one
+2021-11-28 14:38:05 INFO  Main:238 - one
+2021-11-28 14:38:05 INFO  Main:238 - one
+2021-11-28 14:38:05 INFO  Main:238 - one
+2021-11-28 14:38:05 INFO  Main:238 - one
+2021-11-28 14:38:05 INFO  Main:238 - one
+2021-11-28 14:38:05 INFO  Main:238 - one
+2021-11-28 14:38:05 INFO  Main:238 - one
+2021-11-28 14:38:05 INFO  Main:238 - one
+2021-11-28 14:38:05 INFO  Main:270 - three
+2021-11-28 14:38:11 INFO  Main:238 - one
+2021-11-28 14:38:11 INFO  Main:238 - one
+2021-11-28 14:38:11 INFO  Main:238 - one
+2021-11-28 14:38:11 INFO  Main:238 - one
+2021-11-28 14:38:11 INFO  Main:238 - one
+2021-11-28 14:38:11 INFO  Main:238 - one
+2021-11-28 14:38:11 INFO  Main:238 - one
+2021-11-28 14:38:11 INFO  Main:238 - one
+2021-11-28 14:38:11 INFO  Main:238 - one
+2021-11-28 14:38:11 INFO  Main:238 - one
+2021-11-28 14:38:11 INFO  Main:238 - one
+2021-11-28 14:38:11 INFO  Main:238 - one
+2021-11-28 14:38:11 INFO  Main:238 - one
+2021-11-28 14:38:11 INFO  Main:238 - one
+2021-11-28 14:38:11 INFO  Main:238 - one
+2021-11-28 14:38:11 INFO  Main:238 - one
+2021-11-28 14:38:11 INFO  Main:238 - one
+2021-11-28 14:38:11 INFO  Main:238 - one
+2021-11-28 14:38:11 INFO  Main:238 - one
+2021-11-28 14:38:11 INFO  Main:238 - one
+2021-11-28 14:38:11 INFO  Main:242 - two
+2021-11-28 14:38:11 INFO  Main:238 - one
+2021-11-28 14:38:11 INFO  Main:238 - one
+2021-11-28 14:38:11 INFO  Main:238 - one
+2021-11-28 14:38:11 INFO  Main:238 - one
+2021-11-28 14:38:11 INFO  Main:238 - one
+2021-11-28 14:38:11 INFO  Main:238 - one
+2021-11-28 14:38:11 INFO  Main:238 - one
+2021-11-28 14:38:11 INFO  Main:238 - one
+2021-11-28 14:38:11 INFO  Main:238 - one
+2021-11-28 14:38:11 INFO  Main:238 - one
+2021-11-28 14:38:11 INFO  Main:238 - one
+2021-11-28 14:38:11 INFO  Main:270 - three
+2021-11-28 14:38:12 INFO  Main:238 - one
+2021-11-28 14:38:12 INFO  Main:238 - one
+2021-11-28 14:38:12 INFO  Main:238 - one
+2021-11-28 14:38:12 INFO  Main:238 - one
+2021-11-28 14:38:12 INFO  Main:238 - one
+2021-11-28 14:38:12 INFO  Main:238 - one
+2021-11-28 14:38:12 INFO  Main:238 - one
+2021-11-28 14:38:12 INFO  Main:238 - one
+2021-11-28 14:38:12 INFO  Main:238 - one
+2021-11-28 14:38:12 INFO  Main:238 - one
+2021-11-28 14:38:12 INFO  Main:238 - one
+2021-11-28 14:38:12 INFO  Main:238 - one
+2021-11-28 14:38:12 INFO  Main:238 - one
+2021-11-28 14:38:12 INFO  Main:238 - one
+2021-11-28 14:38:12 INFO  Main:238 - one
+2021-11-28 14:38:12 INFO  Main:238 - one
+2021-11-28 14:38:12 INFO  Main:238 - one
+2021-11-28 14:38:12 INFO  Main:238 - one
+2021-11-28 14:38:12 INFO  Main:238 - one
+2021-11-28 14:38:12 INFO  Main:238 - one
+2021-11-28 14:38:12 INFO  Main:242 - two
+2021-11-28 14:38:12 INFO  Main:238 - one
+2021-11-28 14:38:12 INFO  Main:238 - one
+2021-11-28 14:38:12 INFO  Main:238 - one
+2021-11-28 14:38:12 INFO  Main:238 - one
+2021-11-28 14:38:12 INFO  Main:238 - one
+2021-11-28 14:38:12 INFO  Main:238 - one
+2021-11-28 14:38:12 INFO  Main:238 - one
+2021-11-28 14:38:12 INFO  Main:238 - one
+2021-11-28 14:38:12 INFO  Main:238 - one
+2021-11-28 14:38:12 INFO  Main:238 - one
+2021-11-28 14:38:12 INFO  Main:238 - one
+2021-11-28 14:38:12 INFO  Main:270 - three
+2021-11-28 14:38:23 INFO  Main:238 - one
+2021-11-28 14:38:23 INFO  Main:238 - one
+2021-11-28 14:38:23 INFO  Main:238 - one
+2021-11-28 14:38:23 INFO  Main:238 - one
+2021-11-28 14:38:23 INFO  Main:238 - one
+2021-11-28 14:38:23 INFO  Main:238 - one
+2021-11-28 14:38:23 INFO  Main:238 - one
+2021-11-28 14:38:23 INFO  Main:238 - one
+2021-11-28 14:38:23 INFO  Main:238 - one
+2021-11-28 14:38:23 INFO  Main:238 - one
+2021-11-28 14:38:23 INFO  Main:238 - one
+2021-11-28 14:38:23 INFO  Main:238 - one
+2021-11-28 14:38:23 INFO  Main:238 - one
+2021-11-28 14:38:23 INFO  Main:238 - one
+2021-11-28 14:38:23 INFO  Main:238 - one
+2021-11-28 14:38:23 INFO  Main:238 - one
+2021-11-28 14:38:23 INFO  Main:238 - one
+2021-11-28 14:38:23 INFO  Main:238 - one
+2021-11-28 14:38:23 INFO  Main:238 - one
+2021-11-28 14:38:23 INFO  Main:238 - one
+2021-11-28 14:38:23 INFO  Main:242 - two
+2021-11-28 14:38:23 INFO  Main:238 - one
+2021-11-28 14:38:23 INFO  Main:238 - one
+2021-11-28 14:38:23 INFO  Main:238 - one
+2021-11-28 14:38:23 INFO  Main:238 - one
+2021-11-28 14:38:23 INFO  Main:238 - one
+2021-11-28 14:38:23 INFO  Main:238 - one
+2021-11-28 14:38:23 INFO  Main:238 - one
+2021-11-28 14:38:23 INFO  Main:238 - one
+2021-11-28 14:38:23 INFO  Main:238 - one
+2021-11-28 14:38:23 INFO  Main:238 - one
+2021-11-28 14:38:23 INFO  Main:238 - one
+2021-11-28 14:38:23 INFO  Main:294 - four
+2021-11-28 14:38:29 INFO  Main:238 - one
+2021-11-28 14:38:29 INFO  Main:238 - one
+2021-11-28 14:38:29 INFO  Main:238 - one
+2021-11-28 14:38:29 INFO  Main:238 - one
+2021-11-28 14:38:29 INFO  Main:238 - one
+2021-11-28 14:38:29 INFO  Main:238 - one
+2021-11-28 14:38:29 INFO  Main:238 - one
+2021-11-28 14:38:29 INFO  Main:238 - one
+2021-11-28 14:38:29 INFO  Main:238 - one
+2021-11-28 14:38:29 INFO  Main:238 - one
+2021-11-28 14:38:29 INFO  Main:238 - one
+2021-11-28 14:38:29 INFO  Main:238 - one
+2021-11-28 14:38:29 INFO  Main:238 - one
+2021-11-28 14:38:29 INFO  Main:238 - one
+2021-11-28 14:38:29 INFO  Main:238 - one
+2021-11-28 14:38:29 INFO  Main:238 - one
+2021-11-28 14:38:29 INFO  Main:238 - one
+2021-11-28 14:38:29 INFO  Main:238 - one
+2021-11-28 14:38:29 INFO  Main:238 - one
+2021-11-28 14:38:29 INFO  Main:238 - one
+2021-11-28 14:38:29 INFO  Main:242 - two
+2021-11-28 14:38:29 INFO  Main:238 - one
+2021-11-28 14:38:29 INFO  Main:238 - one
+2021-11-28 14:38:29 INFO  Main:238 - one
+2021-11-28 14:38:29 INFO  Main:238 - one
+2021-11-28 14:38:29 INFO  Main:238 - one
+2021-11-28 14:38:29 INFO  Main:238 - one
+2021-11-28 14:38:29 INFO  Main:238 - one
+2021-11-28 14:38:29 INFO  Main:238 - one
+2021-11-28 14:38:29 INFO  Main:238 - one
+2021-11-28 14:38:29 INFO  Main:238 - one
+2021-11-28 14:38:29 INFO  Main:238 - one
+2021-11-28 14:38:29 INFO  Main:294 - four
+2021-11-28 14:38:45 INFO  Main:238 - one
+2021-11-28 14:38:45 INFO  Main:238 - one
+2021-11-28 14:38:45 INFO  Main:238 - one
+2021-11-28 14:38:45 INFO  Main:238 - one
+2021-11-28 14:38:45 INFO  Main:238 - one
+2021-11-28 14:38:45 INFO  Main:238 - one
+2021-11-28 14:38:45 INFO  Main:238 - one
+2021-11-28 14:38:45 INFO  Main:238 - one
+2021-11-28 14:38:45 INFO  Main:238 - one
+2021-11-28 14:38:45 INFO  Main:238 - one
+2021-11-28 14:38:45 INFO  Main:238 - one
+2021-11-28 14:38:45 INFO  Main:238 - one
+2021-11-28 14:38:45 INFO  Main:238 - one
+2021-11-28 14:38:45 INFO  Main:238 - one
+2021-11-28 14:38:45 INFO  Main:238 - one
+2021-11-28 14:38:45 INFO  Main:238 - one
+2021-11-28 14:38:45 INFO  Main:238 - one
+2021-11-28 14:38:45 INFO  Main:238 - one
+2021-11-28 14:38:45 INFO  Main:238 - one
+2021-11-28 14:38:45 INFO  Main:238 - one
+2021-11-28 14:38:45 INFO  Main:242 - two
+2021-11-28 14:38:45 INFO  Main:238 - one
+2021-11-28 14:38:45 INFO  Main:238 - one
+2021-11-28 14:38:45 INFO  Main:238 - one
+2021-11-28 14:38:45 INFO  Main:238 - one
+2021-11-28 14:38:45 INFO  Main:238 - one
+2021-11-28 14:38:45 INFO  Main:238 - one
+2021-11-28 14:38:45 INFO  Main:238 - one
+2021-11-28 14:38:45 INFO  Main:238 - one
+2021-11-28 14:38:45 INFO  Main:238 - one
+2021-11-28 14:38:45 INFO  Main:238 - one
+2021-11-28 14:38:45 INFO  Main:238 - one
+2021-11-28 14:38:45 INFO  Main:294 - four
+2021-11-28 14:38:53 INFO  Main:238 - one
+2021-11-28 14:38:53 INFO  Main:238 - one
+2021-11-28 14:38:53 INFO  Main:238 - one
+2021-11-28 14:38:53 INFO  Main:238 - one
+2021-11-28 14:38:53 INFO  Main:238 - one
+2021-11-28 14:38:53 INFO  Main:238 - one
+2021-11-28 14:38:53 INFO  Main:238 - one
+2021-11-28 14:38:53 INFO  Main:238 - one
+2021-11-28 14:38:53 INFO  Main:238 - one
+2021-11-28 14:38:53 INFO  Main:238 - one
+2021-11-28 14:38:53 INFO  Main:238 - one
+2021-11-28 14:38:53 INFO  Main:238 - one
+2021-11-28 14:38:53 INFO  Main:238 - one
+2021-11-28 14:38:53 INFO  Main:238 - one
+2021-11-28 14:38:53 INFO  Main:238 - one
+2021-11-28 14:38:53 INFO  Main:238 - one
+2021-11-28 14:38:53 INFO  Main:238 - one
+2021-11-28 14:38:53 INFO  Main:238 - one
+2021-11-28 14:38:53 INFO  Main:238 - one
+2021-11-28 14:38:53 INFO  Main:238 - one
+2021-11-28 14:38:53 INFO  Main:242 - two
+2021-11-28 14:38:53 INFO  Main:238 - one
+2021-11-28 14:38:53 INFO  Main:238 - one
+2021-11-28 14:38:53 INFO  Main:238 - one
+2021-11-28 14:38:53 INFO  Main:238 - one
+2021-11-28 14:38:53 INFO  Main:238 - one
+2021-11-28 14:38:53 INFO  Main:238 - one
+2021-11-28 14:38:53 INFO  Main:238 - one
+2021-11-28 14:38:53 INFO  Main:238 - one
+2021-11-28 14:38:53 INFO  Main:238 - one
+2021-11-28 14:38:53 INFO  Main:238 - one
+2021-11-28 14:38:53 INFO  Main:238 - one
+2021-11-28 14:38:53 INFO  Main:294 - four
+2021-11-28 14:38:59 INFO  Main:238 - one
+2021-11-28 14:38:59 INFO  Main:238 - one
+2021-11-28 14:38:59 INFO  Main:238 - one
+2021-11-28 14:38:59 INFO  Main:238 - one
+2021-11-28 14:38:59 INFO  Main:238 - one
+2021-11-28 14:38:59 INFO  Main:238 - one
+2021-11-28 14:38:59 INFO  Main:238 - one
+2021-11-28 14:38:59 INFO  Main:238 - one
+2021-11-28 14:38:59 INFO  Main:238 - one
+2021-11-28 14:38:59 INFO  Main:238 - one
+2021-11-28 14:38:59 INFO  Main:238 - one
+2021-11-28 14:38:59 INFO  Main:238 - one
+2021-11-28 14:38:59 INFO  Main:238 - one
+2021-11-28 14:38:59 INFO  Main:238 - one
+2021-11-28 14:38:59 INFO  Main:238 - one
+2021-11-28 14:38:59 INFO  Main:238 - one
+2021-11-28 14:38:59 INFO  Main:238 - one
+2021-11-28 14:38:59 INFO  Main:238 - one
+2021-11-28 14:38:59 INFO  Main:238 - one
+2021-11-28 14:38:59 INFO  Main:238 - one
+2021-11-28 14:38:59 INFO  Main:242 - two
+2021-11-28 14:38:59 INFO  Main:238 - one
+2021-11-28 14:38:59 INFO  Main:238 - one
+2021-11-28 14:38:59 INFO  Main:238 - one
+2021-11-28 14:38:59 INFO  Main:238 - one
+2021-11-28 14:38:59 INFO  Main:238 - one
+2021-11-28 14:38:59 INFO  Main:238 - one
+2021-11-28 14:38:59 INFO  Main:238 - one
+2021-11-28 14:38:59 INFO  Main:238 - one
+2021-11-28 14:38:59 INFO  Main:238 - one
+2021-11-28 14:38:59 INFO  Main:238 - one
+2021-11-28 14:38:59 INFO  Main:238 - one
+2021-11-28 14:38:59 INFO  Main:294 - four
+2021-11-28 14:39:15 INFO  Main:394 - success
+2021-11-28 14:39:29 INFO  Main:394 - success
+2021-11-28 14:39:30 INFO  Main:188 - added1000
+2021-11-28 14:40:25 INFO  Main:238 - one
+2021-11-28 14:40:25 INFO  Main:238 - one
+2021-11-28 14:40:25 INFO  Main:238 - one
+2021-11-28 14:40:25 INFO  Main:238 - one
+2021-11-28 14:40:25 INFO  Main:238 - one
+2021-11-28 14:40:25 INFO  Main:238 - one
+2021-11-28 14:40:25 INFO  Main:238 - one
+2021-11-28 14:40:25 INFO  Main:238 - one
+2021-11-28 14:40:25 INFO  Main:238 - one
+2021-11-28 14:40:25 INFO  Main:238 - one
+2021-11-28 14:40:25 INFO  Main:238 - one
+2021-11-28 14:40:25 INFO  Main:238 - one
+2021-11-28 14:40:25 INFO  Main:238 - one
+2021-11-28 14:40:25 INFO  Main:238 - one
+2021-11-28 14:40:25 INFO  Main:238 - one
+2021-11-28 14:40:25 INFO  Main:238 - one
+2021-11-28 14:40:25 INFO  Main:238 - one
+2021-11-28 14:40:25 INFO  Main:238 - one
+2021-11-28 14:40:25 INFO  Main:238 - one
+2021-11-28 14:40:25 INFO  Main:238 - one
+2021-11-28 14:40:25 INFO  Main:242 - two
+2021-11-28 14:40:25 INFO  Main:238 - one
+2021-11-28 14:40:25 INFO  Main:238 - one
+2021-11-28 14:40:25 INFO  Main:238 - one
+2021-11-28 14:40:25 INFO  Main:238 - one
+2021-11-28 14:40:25 INFO  Main:238 - one
+2021-11-28 14:40:25 INFO  Main:238 - one
+2021-11-28 14:40:25 INFO  Main:238 - one
+2021-11-28 14:40:25 INFO  Main:238 - one
+2021-11-28 14:40:25 INFO  Main:238 - one
+2021-11-28 14:40:25 INFO  Main:238 - one
+2021-11-28 14:40:25 INFO  Main:238 - one
+2021-11-28 14:40:25 INFO  Main:294 - four
+2021-11-28 14:40:29 INFO  Main:238 - one
+2021-11-28 14:40:29 INFO  Main:238 - one
+2021-11-28 14:40:29 INFO  Main:238 - one
+2021-11-28 14:40:29 INFO  Main:238 - one
+2021-11-28 14:40:29 INFO  Main:238 - one
+2021-11-28 14:40:29 INFO  Main:238 - one
+2021-11-28 14:40:29 INFO  Main:238 - one
+2021-11-28 14:40:29 INFO  Main:238 - one
+2021-11-28 14:40:29 INFO  Main:238 - one
+2021-11-28 14:40:29 INFO  Main:238 - one
+2021-11-28 14:40:29 INFO  Main:238 - one
+2021-11-28 14:40:29 INFO  Main:238 - one
+2021-11-28 14:40:29 INFO  Main:238 - one
+2021-11-28 14:40:29 INFO  Main:238 - one
+2021-11-28 14:40:29 INFO  Main:238 - one
+2021-11-28 14:40:29 INFO  Main:238 - one
+2021-11-28 14:40:29 INFO  Main:238 - one
+2021-11-28 14:40:29 INFO  Main:238 - one
+2021-11-28 14:40:29 INFO  Main:238 - one
+2021-11-28 14:40:29 INFO  Main:238 - one
+2021-11-28 14:40:29 INFO  Main:242 - two
+2021-11-28 14:40:29 INFO  Main:238 - one
+2021-11-28 14:40:29 INFO  Main:238 - one
+2021-11-28 14:40:29 INFO  Main:238 - one
+2021-11-28 14:40:29 INFO  Main:238 - one
+2021-11-28 14:40:29 INFO  Main:238 - one
+2021-11-28 14:40:29 INFO  Main:238 - one
+2021-11-28 14:40:29 INFO  Main:238 - one
+2021-11-28 14:40:29 INFO  Main:238 - one
+2021-11-28 14:40:29 INFO  Main:238 - one
+2021-11-28 14:40:29 INFO  Main:238 - one
+2021-11-28 14:40:29 INFO  Main:238 - one
+2021-11-28 14:40:29 INFO  Main:294 - four
+2021-11-28 14:40:32 INFO  Main:238 - one
+2021-11-28 14:40:32 INFO  Main:238 - one
+2021-11-28 14:40:32 INFO  Main:238 - one
+2021-11-28 14:40:32 INFO  Main:238 - one
+2021-11-28 14:40:32 INFO  Main:238 - one
+2021-11-28 14:40:32 INFO  Main:238 - one
+2021-11-28 14:40:32 INFO  Main:238 - one
+2021-11-28 14:40:32 INFO  Main:238 - one
+2021-11-28 14:40:32 INFO  Main:238 - one
+2021-11-28 14:40:32 INFO  Main:238 - one
+2021-11-28 14:40:32 INFO  Main:238 - one
+2021-11-28 14:40:32 INFO  Main:238 - one
+2021-11-28 14:40:32 INFO  Main:238 - one
+2021-11-28 14:40:32 INFO  Main:238 - one
+2021-11-28 14:40:32 INFO  Main:238 - one
+2021-11-28 14:40:32 INFO  Main:238 - one
+2021-11-28 14:40:32 INFO  Main:238 - one
+2021-11-28 14:40:32 INFO  Main:238 - one
+2021-11-28 14:40:32 INFO  Main:238 - one
+2021-11-28 14:40:32 INFO  Main:238 - one
+2021-11-28 14:40:32 INFO  Main:242 - two
+2021-11-28 14:40:32 INFO  Main:238 - one
+2021-11-28 14:40:32 INFO  Main:238 - one
+2021-11-28 14:40:32 INFO  Main:238 - one
+2021-11-28 14:40:32 INFO  Main:238 - one
+2021-11-28 14:40:32 INFO  Main:238 - one
+2021-11-28 14:40:32 INFO  Main:238 - one
+2021-11-28 14:40:32 INFO  Main:238 - one
+2021-11-28 14:40:32 INFO  Main:238 - one
+2021-11-28 14:40:32 INFO  Main:238 - one
+2021-11-28 14:40:32 INFO  Main:238 - one
+2021-11-28 14:40:32 INFO  Main:238 - one
+2021-11-28 14:40:32 INFO  Main:294 - four
+2021-11-28 14:40:35 INFO  Main:238 - one
+2021-11-28 14:40:35 INFO  Main:238 - one
+2021-11-28 14:40:35 INFO  Main:238 - one
+2021-11-28 14:40:35 INFO  Main:238 - one
+2021-11-28 14:40:35 INFO  Main:238 - one
+2021-11-28 14:40:35 INFO  Main:238 - one
+2021-11-28 14:40:35 INFO  Main:238 - one
+2021-11-28 14:40:35 INFO  Main:238 - one
+2021-11-28 14:40:35 INFO  Main:238 - one
+2021-11-28 14:40:35 INFO  Main:238 - one
+2021-11-28 14:40:35 INFO  Main:238 - one
+2021-11-28 14:40:35 INFO  Main:238 - one
+2021-11-28 14:40:35 INFO  Main:238 - one
+2021-11-28 14:40:35 INFO  Main:238 - one
+2021-11-28 14:40:35 INFO  Main:238 - one
+2021-11-28 14:40:35 INFO  Main:238 - one
+2021-11-28 14:40:35 INFO  Main:238 - one
+2021-11-28 14:40:35 INFO  Main:238 - one
+2021-11-28 14:40:35 INFO  Main:238 - one
+2021-11-28 14:40:35 INFO  Main:238 - one
+2021-11-28 14:40:35 INFO  Main:242 - two
+2021-11-28 14:40:35 INFO  Main:238 - one
+2021-11-28 14:40:35 INFO  Main:238 - one
+2021-11-28 14:40:35 INFO  Main:238 - one
+2021-11-28 14:40:35 INFO  Main:238 - one
+2021-11-28 14:40:35 INFO  Main:238 - one
+2021-11-28 14:40:35 INFO  Main:238 - one
+2021-11-28 14:40:35 INFO  Main:238 - one
+2021-11-28 14:40:35 INFO  Main:238 - one
+2021-11-28 14:40:35 INFO  Main:238 - one
+2021-11-28 14:40:35 INFO  Main:238 - one
+2021-11-28 14:40:35 INFO  Main:238 - one
+2021-11-28 14:40:35 INFO  Main:294 - four
+2021-11-28 14:40:38 INFO  Main:238 - one
+2021-11-28 14:40:38 INFO  Main:238 - one
+2021-11-28 14:40:38 INFO  Main:238 - one
+2021-11-28 14:40:38 INFO  Main:238 - one
+2021-11-28 14:40:38 INFO  Main:238 - one
+2021-11-28 14:40:38 INFO  Main:238 - one
+2021-11-28 14:40:38 INFO  Main:238 - one
+2021-11-28 14:40:38 INFO  Main:238 - one
+2021-11-28 14:40:38 INFO  Main:238 - one
+2021-11-28 14:40:38 INFO  Main:238 - one
+2021-11-28 14:40:38 INFO  Main:238 - one
+2021-11-28 14:40:38 INFO  Main:238 - one
+2021-11-28 14:40:38 INFO  Main:238 - one
+2021-11-28 14:40:38 INFO  Main:238 - one
+2021-11-28 14:40:38 INFO  Main:238 - one
+2021-11-28 14:40:38 INFO  Main:238 - one
+2021-11-28 14:40:38 INFO  Main:238 - one
+2021-11-28 14:40:38 INFO  Main:238 - one
+2021-11-28 14:40:38 INFO  Main:238 - one
+2021-11-28 14:40:38 INFO  Main:238 - one
+2021-11-28 14:40:38 INFO  Main:242 - two
+2021-11-28 14:40:38 INFO  Main:238 - one
+2021-11-28 14:40:38 INFO  Main:238 - one
+2021-11-28 14:40:38 INFO  Main:238 - one
+2021-11-28 14:40:38 INFO  Main:238 - one
+2021-11-28 14:40:38 INFO  Main:238 - one
+2021-11-28 14:40:38 INFO  Main:238 - one
+2021-11-28 14:40:38 INFO  Main:238 - one
+2021-11-28 14:40:38 INFO  Main:238 - one
+2021-11-28 14:40:38 INFO  Main:238 - one
+2021-11-28 14:40:38 INFO  Main:238 - one
+2021-11-28 14:40:38 INFO  Main:238 - one
+2021-11-28 14:40:38 INFO  Main:294 - four
+2021-11-28 14:42:48 INFO  Main:378 - success
+2021-11-28 14:42:48 INFO  Main:325 - success
+2021-11-28 14:42:48 INFO  Main:330 - inserted user
+2021-11-28 14:43:15 INFO  Main:378 - success
+2021-11-28 14:43:15 INFO  Main:325 - success
+2021-11-28 14:43:15 INFO  Main:330 - inserted user
+2021-11-28 14:43:17 INFO  Main:205 - Transaction successful
+2021-11-28 14:52:41 ERROR Main:328 - Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+2021-11-28 14:52:41 INFO  Main:330 - inserted user
+2021-11-28 14:53:51 ERROR Main:328 - Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+2021-11-28 14:53:51 INFO  Main:330 - inserted user
+2021-11-28 14:53:51 INFO  Main:197 - sell chestunna
+2021-11-28 14:53:51 INFO  Main:205 - 
+2021-11-28 14:54:33 INFO  Main:378 - success
+2021-11-28 14:54:33 INFO  Main:325 - success
+2021-11-28 14:54:33 INFO  Main:330 - inserted user
+2021-11-28 14:54:41 INFO  Main:103 - listcompanies successful
+2021-11-28 14:54:46 INFO  Main:378 - success
+2021-11-28 14:54:46 INFO  Main:325 - success
+2021-11-28 14:54:46 INFO  Main:330 - inserted user
+2021-11-28 14:55:19 INFO  Main:378 - success
+2021-11-28 14:55:19 INFO  Main:325 - success
+2021-11-28 14:55:19 INFO  Main:330 - inserted user
+2021-11-28 14:55:19 INFO  Main:197 - sell chestunna
+2021-11-28 14:55:20 INFO  Main:205 - Transaction successful
+2021-11-28 14:56:35 INFO  Main:378 - success
+2021-11-28 14:56:35 INFO  Main:325 - success
+2021-11-28 14:56:35 INFO  Main:330 - inserted user
+2021-11-28 14:56:35 INFO  Main:197 - sell chestunna
+2021-11-28 14:56:36 INFO  Main:205 - Transaction successful
+2021-11-28 14:58:33 INFO  Main:378 - success
+2021-11-28 14:58:33 INFO  Main:325 - success
+2021-11-28 14:58:33 INFO  Main:330 - inserted user
+2021-11-28 14:58:33 INFO  Main:197 - sell chestunna
+2021-11-28 14:58:34 INFO  Main:205 - Transaction successful
+2021-11-28 14:59:51 INFO  Main:378 - success
+2021-11-28 14:59:51 INFO  Main:325 - success
+2021-11-28 14:59:51 INFO  Main:330 - inserted user
+2021-11-28 14:59:51 INFO  Main:197 - sell chestunna
+2021-11-28 15:00:52 INFO  Main:205 - Transaction fail
+2021-11-28 15:01:48 INFO  Main:378 - success
+2021-11-28 15:01:48 INFO  Main:325 - success
+2021-11-28 15:01:48 INFO  Main:330 - inserted user
+2021-11-28 15:01:48 INFO  Main:197 - sell chestunna
+2021-11-28 15:04:00 ERROR Main:328 - Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+2021-11-28 15:04:00 INFO  Main:330 - inserted user
+2021-11-28 15:04:00 INFO  Main:197 - sell chestunna
+2021-11-28 15:05:57 ERROR Main:328 - Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+2021-11-28 15:05:57 INFO  Main:330 - inserted user
+2021-11-28 15:05:57 INFO  Main:197 - sell chestunna
+2021-11-28 15:06:23 INFO  Main:205 - 
+2021-11-28 15:11:44 INFO  Main:46 - user logged insrm@g.com
+2021-11-28 15:11:54 INFO  Main:378 - success
+2021-11-28 15:11:54 INFO  Main:325 - success
+2021-11-28 15:11:54 INFO  Main:330 - inserted user
+2021-11-28 15:12:12 INFO  Main:378 - success
+2021-11-28 15:12:12 INFO  Main:325 - success
+2021-11-28 15:12:12 INFO  Main:330 - inserted user
+2021-11-28 15:12:12 INFO  Main:197 - sell chestunna
+2021-11-28 15:12:14 INFO  Main:205 - Transaction successful
+2021-11-28 15:12:23 INFO  Main:103 - listcompanies successful
+2021-11-28 15:12:26 INFO  Main:378 - success
+2021-11-28 15:12:26 INFO  Main:325 - success
+2021-11-28 15:12:26 INFO  Main:330 - inserted user
+2021-11-28 15:13:20 INFO  Main:394 - success
+2021-11-28 15:13:30 INFO  Main:394 - success
+2021-11-28 15:13:31 INFO  Main:188 - added100
+2021-11-28 15:15:53 INFO  Main:394 - success
+2021-11-28 15:15:53 INFO  Main:188 - added100
+2021-11-28 15:16:01 INFO  Main:394 - success
+2021-11-28 15:16:03 INFO  Main:188 - added100
+2021-11-28 15:16:16 INFO  Main:394 - success
+2021-11-28 15:16:24 INFO  Main:378 - success
+2021-11-28 15:16:24 INFO  Main:325 - success
+2021-11-28 15:16:24 INFO  Main:330 - inserted user
+2021-11-28 15:16:49 INFO  Main:378 - success
+2021-11-28 15:16:49 INFO  Main:325 - success
+2021-11-28 15:16:49 INFO  Main:330 - inserted user
+2021-11-28 15:16:49 INFO  Main:197 - sell chestunna
+2021-11-28 15:16:51 INFO  Main:205 - 
+2021-11-28 15:16:58 INFO  Main:378 - success
+2021-11-28 15:16:58 INFO  Main:325 - success
+2021-11-28 15:16:58 INFO  Main:330 - inserted user
+2021-11-28 15:17:01 INFO  Main:394 - success
+2021-11-28 15:17:09 INFO  Main:216 - success
+2021-11-28 15:17:32 INFO  Main:161 - trade request list 
+2021-11-28 15:18:25 INFO  Main:378 - success
+2021-11-28 15:18:25 INFO  Main:325 - success
+2021-11-28 15:18:25 INFO  Main:330 - inserted user
+2021-11-28 15:19:12 INFO  Main:394 - success
+2021-11-28 15:20:36 INFO  Main:378 - success
+2021-11-28 15:20:36 INFO  Main:325 - success
+2021-11-28 15:20:36 INFO  Main:330 - inserted user
+2021-11-28 15:21:04 INFO  Main:103 - listcompanies successful
+2021-11-28 15:21:08 INFO  Main:378 - success
+2021-11-28 15:21:08 INFO  Main:325 - success
+2021-11-28 15:21:08 INFO  Main:330 - inserted user
+2021-11-28 15:21:21 INFO  Main:378 - success
+2021-11-28 15:21:21 INFO  Main:325 - success
+2021-11-28 15:21:21 INFO  Main:330 - inserted user
+2021-11-28 15:21:22 INFO  Main:197 - sell chestunna
+2021-11-28 15:21:23 INFO  Main:205 - 
+2021-11-28 15:21:29 INFO  Main:378 - success
+2021-11-28 15:21:29 INFO  Main:325 - success
+2021-11-28 15:21:29 INFO  Main:330 - inserted user
+2021-11-28 15:21:54 INFO  Main:216 - success
+2021-11-28 15:24:38 INFO  Main:216 - success
+2021-11-28 15:26:05 INFO  Main:378 - success
+2021-11-28 15:26:05 INFO  Main:325 - success
+2021-11-28 15:26:05 INFO  Main:330 - inserted user
+2021-11-28 15:26:30 INFO  Main:378 - success
+2021-11-28 15:26:30 INFO  Main:325 - success
+2021-11-28 15:26:30 INFO  Main:330 - inserted user
+2021-11-28 15:26:30 INFO  Main:197 - sell chestunna
+2021-11-28 15:26:32 INFO  Main:205 - Transaction successful
+2021-11-28 15:26:38 INFO  Main:378 - success
+2021-11-28 15:26:38 INFO  Main:325 - success
+2021-11-28 15:26:38 INFO  Main:330 - inserted user
+2021-11-28 15:27:31 INFO  Main:103 - listcompanies successful
+2021-11-28 15:27:34 INFO  Main:378 - success
+2021-11-28 15:27:34 INFO  Main:325 - success
+2021-11-28 15:27:34 INFO  Main:330 - inserted user
+2021-11-28 15:28:44 INFO  Main:378 - success
+2021-11-28 15:28:44 INFO  Main:325 - success
+2021-11-28 15:28:44 INFO  Main:330 - inserted user
+2021-11-28 15:28:44 INFO  Main:197 - sell chestunna
+2021-11-28 15:29:10 INFO  Main:205 - 
+2021-11-28 15:35:13 INFO  Main:103 - listcompanies successful
+2021-11-28 15:35:18 INFO  Main:378 - success
+2021-11-28 15:35:18 INFO  Main:325 - success
+2021-11-28 15:35:18 INFO  Main:330 - inserted user
+2021-11-28 15:36:14 INFO  Main:216 - success
+2021-11-28 15:37:14 INFO  Main:216 - success
+2021-11-28 15:37:17 INFO  Main:216 - success
+2021-11-28 15:52:24 INFO  Main:216 - success
+2021-11-28 15:52:24 INFO  Main:216 - success
+2021-11-28 15:53:26 INFO  Main:378 - success
+2021-11-28 15:53:26 INFO  Main:325 - success
+2021-11-28 15:53:26 INFO  Main:330 - inserted user
+2021-11-28 15:53:32 INFO  Main:161 - trade request list 
+2021-11-28 15:53:32 INFO  Main:103 - listcompanies successful
+2021-11-28 15:53:57 INFO  Main:103 - listcompanies successful
+2021-11-28 15:53:59 INFO  Main:117 - failure
+2021-11-28 15:54:09 INFO  Main:394 - success
+2021-11-28 15:54:16 INFO  Main:103 - listcompanies successful
+2021-11-28 15:58:10 INFO  Main:103 - listcompanies successful
+2021-11-28 15:58:12 INFO  Main:117 - failure

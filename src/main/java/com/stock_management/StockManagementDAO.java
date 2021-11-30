@@ -178,10 +178,20 @@ public class StockManagementDAO {
                 response = updateCompanyStocks(connection, availableStocks - quantity, companyId);
             }
 
+            int gain = 0;
+            String insertDetails = "insert into StockDetails values (?, ?, ?)";
+            PreparedStatement statement4 = connection.prepareStatement(insertDetails);
+            statement4.setString(1, userId);
+            statement4.setString(2, companyId);
+            statement4.setInt(3, gain);
+            statement4.executeUpdate();
+
             if(response.equals("success")) {
 //                connection.commit();
                 response = "Transaction successful";
             }
+
+
         } else {
             String requestId = UUID.randomUUID().toString();
             String status = "failure";
@@ -276,11 +286,11 @@ public class StockManagementDAO {
             rs.next();
             int buyprice = rs.getInt("price");
             int gain = (price - buyprice) * quantity;
-            String insertDetails = "insert into StockDetails values (?, ?, ?)";
+            String insertDetails = "update StockDetails set gain = ? where customer_id = ? and company_id = ?";
             PreparedStatement statement4 = connection.prepareStatement(insertDetails);
-            statement4.setString(1, userId);
-            statement4.setString(2, companyId);
-            statement4.setInt(3, gain);
+            statement4.setInt(1, gain);
+            statement4.setString(2, userId);
+            statement4.setString(3, companyId);
             statement4.executeUpdate();
         }
         return response;
@@ -503,7 +513,7 @@ public class StockManagementDAO {
     public List<CompanyStock> getCompanyList(Connection conn) {
         List<CompanyStock> companyStocks = new ArrayList<CompanyStock>();
         try {
-            PreparedStatement statement = conn.prepareStatement("Select company_id,price,available_quantity from CompanyStock order by created_time desc");
+            PreparedStatement statement = conn.prepareStatement("Select company_id,price,available_quantity from CompanyStock order by company_id asc, created_time desc");
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {

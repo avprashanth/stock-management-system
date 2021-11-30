@@ -20573,3 +20573,453 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 2021-11-28 19:14:19 INFO  Main:242 - two
 2021-11-29 17:33:26 INFO  Main:85 - Could not upload the file: new_Stock (1).xlsx!
 2021-11-29 17:35:12 INFO  Main:85 - Could not upload the file: new_Stock (1).xlsx!
+2021-11-29 17:55:39 INFO  Main:85 - Could not upload the file: new_Stock (1).xlsx!
+2021-11-29 18:05:09 INFO  Main:85 - Could not upload the file: new_Stock (1).xlsx!
+2021-11-29 20:12:00 INFO  Main:46 - user logged inx@g.com
+2021-11-29 20:12:22 INFO  Main:419 - success
+2021-11-29 20:12:37 INFO  Main:46 - user logged inx@g.com
+2021-11-29 20:12:40 INFO  Main:419 - success
+2021-11-29 20:13:49 INFO  Main:419 - success
+2021-11-29 20:14:08 INFO  Main:419 - success
+2021-11-29 20:14:51 INFO  Main:419 - success
+2021-11-29 20:20:40 INFO  Main:161 - trade request list 
+2021-11-29 20:20:57 INFO  Main:46 - user logged inx@g.com
+2021-11-29 20:21:02 INFO  Main:103 - listcompanies successful
+2021-11-29 20:21:06 INFO  Main:161 - trade request list 
+2021-11-29 20:21:09 INFO  Main:419 - success
+2021-11-29 20:28:58 INFO  Main:419 - success
+2021-11-29 20:29:00 INFO  Main:403 - success
+2021-11-29 20:29:00 INFO  Main:350 - success
+2021-11-29 20:29:00 INFO  Main:355 - inserted user
+2021-11-29 20:29:04 INFO  Main:403 - success
+2021-11-29 20:29:04 INFO  Main:350 - success
+2021-11-29 20:29:04 INFO  Main:355 - inserted user
+2021-11-29 20:57:53 INFO  Main:61 - stockBrokerLogin:admin@g.com
+2021-11-29 20:57:53 INFO  Main:103 - listcompanies successful
+2021-11-29 21:01:38 INFO  Main:103 - listcompanies successful
+2021-11-29 21:05:33 INFO  StockManagementDAO:43 - Inserted user
+2021-11-29 21:05:33 INFO  Main:31 - inserted usersrikanth@gmail.com
+2021-11-29 21:07:30 INFO  StockManagementDAO:43 - Inserted user
+2021-11-29 21:07:30 INFO  Main:31 - inserted useraravindthonupunuri75@gmail.com
+2021-11-29 21:08:03 INFO  Main:61 - stockBrokerLogin:Srikanth@gmail.com
+2021-11-29 21:08:03 INFO  Main:103 - listcompanies successful
+2021-11-29 21:08:20 INFO  Main:85 - Could not upload the file: new_Stock (1).xlsx!
+2021-11-29 21:08:20 INFO  Main:103 - listcompanies successful
+2021-11-29 21:09:03 INFO  StockManagementDAO:43 - Inserted user
+2021-11-29 21:09:03 INFO  Main:31 - inserted useraravind@gmail.com
+2021-11-29 21:09:19 INFO  Main:46 - user logged inaravind@gmail.com
+2021-11-29 21:09:53 INFO  Main:419 - success
+2021-11-29 21:10:08 INFO  Main:419 - success
+2021-11-29 21:10:08 INFO  Main:188 - added500
+2021-11-29 21:10:20 INFO  Main:419 - success
+2021-11-29 21:10:20 INFO  Main:188 - added500
+2021-11-29 21:10:34 INFO  Main:419 - success
+2021-11-29 21:10:34 INFO  Main:188 - added500
+2021-11-29 21:10:43 INFO  Main:419 - success
+2021-11-29 21:10:43 INFO  Main:188 - added100
+2021-11-29 21:10:49 INFO  Main:419 - success
+2021-11-29 21:11:25 INFO  Main:103 - listcompanies successful
+2021-11-29 21:13:05 INFO  Main:103 - listcompanies successful
+2021-11-29 21:13:06 INFO  Main:117 - Transaction successful
+2021-11-29 21:13:18 INFO  Main:103 - listcompanies successful
+2021-11-29 21:13:19 INFO  Main:117 - Transaction successful
+2021-11-29 21:13:24 INFO  Main:103 - listcompanies successful
+2021-11-29 21:13:31 INFO  Main:103 - listcompanies successful
+2021-11-29 21:13:31 INFO  Main:103 - listcompanies successful
+2021-11-29 21:13:32 INFO  Main:103 - listcompanies successful
+2021-11-29 21:13:32 INFO  Main:103 - listcompanies successful
+2021-11-29 21:13:32 INFO  Main:103 - listcompanies successful
+2021-11-29 21:13:32 INFO  Main:103 - listcompanies successful
+2021-11-29 21:13:33 INFO  Main:103 - listcompanies successful
+2021-11-29 21:13:33 INFO  Main:103 - listcompanies successful
+2021-11-29 21:13:33 INFO  Main:103 - listcompanies successful
+2021-11-29 21:13:34 INFO  Main:103 - listcompanies successful
+2021-11-29 21:13:56 INFO  Main:103 - listcompanies successful
+2021-11-29 21:13:56 INFO  Main:117 - Transaction successful
+2021-11-29 21:13:58 INFO  Main:103 - listcompanies successful
+2021-11-29 21:14:01 INFO  Main:103 - listcompanies successful
+2021-11-29 21:14:02 INFO  Main:103 - listcompanies successful
+2021-11-29 21:14:34 INFO  Main:403 - success
+2021-11-29 21:14:34 INFO  Main:350 - success
+2021-11-29 21:14:34 INFO  Main:355 - inserted user
+2021-11-29 21:14:57 INFO  Main:103 - listcompanies successful
+2021-11-29 21:15:17 INFO  Main:403 - success
+2021-11-29 21:15:17 INFO  Main:350 - success
+2021-11-29 21:15:17 INFO  Main:355 - inserted user
+2021-11-29 21:15:27 INFO  Main:103 - listcompanies successful
+2021-11-29 21:16:19 INFO  Main:103 - listcompanies successful
+2021-11-29 21:16:19 INFO  Main:117 - Transaction successful
+2021-11-29 21:16:24 INFO  Main:403 - success
+2021-11-29 21:16:24 INFO  Main:350 - success
+2021-11-29 21:16:24 INFO  Main:355 - inserted user
+2021-11-29 21:16:33 INFO  Main:216 - success
+2021-11-29 21:17:00 INFO  Main:103 - listcompanies successful
+2021-11-29 21:17:05 INFO  Main:403 - success
+2021-11-29 21:17:05 INFO  Main:350 - success
+2021-11-29 21:17:05 INFO  Main:355 - inserted user
+2021-11-29 21:18:05 INFO  Main:61 - stockBrokerLogin:Srikanth@gmail.com
+2021-11-29 21:18:05 INFO  Main:103 - listcompanies successful
+2021-11-29 21:19:05 INFO  Main:80 - upload by admin:Uploaded the file successfully: new_Stock (1).xlsx
+2021-11-29 21:19:05 INFO  Main:103 - listcompanies successful
+2021-11-29 21:19:24 INFO  Main:46 - user logged inaravind@gmail.com
+2021-11-29 21:19:27 INFO  Main:403 - success
+2021-11-29 21:19:27 INFO  Main:350 - success
+2021-11-29 21:19:27 INFO  Main:355 - inserted user
+2021-11-29 21:19:40 INFO  Main:403 - success
+2021-11-29 21:19:40 INFO  Main:350 - success
+2021-11-29 21:19:40 INFO  Main:355 - inserted user
+2021-11-29 21:20:15 INFO  Main:403 - success
+2021-11-29 21:20:15 INFO  Main:350 - success
+2021-11-29 21:20:15 INFO  Main:355 - inserted user
+2021-11-29 21:20:15 INFO  Main:197 - sell chestunna
+2021-11-29 21:20:15 INFO  Main:205 - Transaction successful
+2021-11-29 21:20:24 INFO  Main:403 - success
+2021-11-29 21:20:24 INFO  Main:350 - success
+2021-11-29 21:20:24 INFO  Main:355 - inserted user
+2021-11-29 21:21:06 INFO  Main:403 - success
+2021-11-29 21:21:06 INFO  Main:350 - success
+2021-11-29 21:21:06 INFO  Main:355 - inserted user
+2021-11-29 21:21:17 INFO  Main:216 - success
+2021-11-29 21:21:40 INFO  Main:334 - success
+2021-11-29 21:22:50 INFO  Main:161 - trade request list 
+2021-11-29 21:23:18 INFO  Main:403 - success
+2021-11-29 21:23:18 INFO  Main:350 - success
+2021-11-29 21:23:18 INFO  Main:355 - inserted user
+2021-11-29 21:23:37 INFO  Main:216 - success
+2021-11-29 21:23:47 INFO  Main:103 - listcompanies successful
+2021-11-29 21:23:51 INFO  Main:403 - success
+2021-11-29 21:23:51 INFO  Main:350 - success
+2021-11-29 21:23:51 INFO  Main:355 - inserted user
+2021-11-29 21:24:05 INFO  Main:103 - listcompanies successful
+2021-11-29 21:24:30 INFO  Main:403 - success
+2021-11-29 21:24:30 INFO  Main:350 - success
+2021-11-29 21:24:30 INFO  Main:355 - inserted user
+2021-11-29 21:24:56 INFO  Main:161 - trade request list 
+2021-11-29 21:24:58 INFO  Main:334 - success
+2021-11-29 21:25:03 INFO  Main:334 - success
+2021-11-29 21:25:07 INFO  Main:403 - success
+2021-11-29 21:25:07 INFO  Main:350 - success
+2021-11-29 21:25:07 INFO  Main:355 - inserted user
+2021-11-29 21:25:32 INFO  Main:61 - stockBrokerLogin:Srikanth@gmail.com
+2021-11-29 21:25:32 INFO  Main:103 - listcompanies successful
+2021-11-29 21:25:44 INFO  Main:80 - upload by admin:Uploaded the file successfully: new_Stock (1).xlsx
+2021-11-29 21:25:44 INFO  Main:103 - listcompanies successful
+2021-11-29 21:26:41 INFO  Main:46 - user logged inaravind@gmail.com
+2021-11-29 21:26:42 INFO  Main:334 - success
+2021-11-29 21:26:45 INFO  Main:403 - success
+2021-11-29 21:26:45 INFO  Main:350 - success
+2021-11-29 21:26:45 INFO  Main:355 - inserted user
+2021-11-29 21:26:56 INFO  Main:403 - success
+2021-11-29 21:26:56 INFO  Main:350 - success
+2021-11-29 21:26:56 INFO  Main:355 - inserted user
+2021-11-29 21:26:56 INFO  Main:197 - sell chestunna
+2021-11-29 21:26:56 INFO  Main:205 - Transaction fail
+2021-11-29 21:27:00 INFO  Main:403 - success
+2021-11-29 21:27:00 INFO  Main:350 - success
+2021-11-29 21:27:00 INFO  Main:355 - inserted user
+2021-11-29 21:27:02 INFO  Main:403 - success
+2021-11-29 21:27:02 INFO  Main:350 - success
+2021-11-29 21:27:02 INFO  Main:355 - inserted user
+2021-11-29 21:27:12 INFO  Main:403 - success
+2021-11-29 21:27:12 INFO  Main:350 - success
+2021-11-29 21:27:12 INFO  Main:355 - inserted user
+2021-11-29 21:27:19 INFO  Main:334 - success
+2021-11-29 21:27:21 INFO  Main:403 - success
+2021-11-29 21:27:21 INFO  Main:350 - success
+2021-11-29 21:27:21 INFO  Main:355 - inserted user
+2021-11-29 21:27:24 INFO  Main:334 - success
+2021-11-29 21:27:25 INFO  Main:403 - success
+2021-11-29 21:27:25 INFO  Main:350 - success
+2021-11-29 21:27:25 INFO  Main:355 - inserted user
+2021-11-29 21:30:05 INFO  Main:403 - success
+2021-11-29 21:30:05 INFO  Main:350 - success
+2021-11-29 21:30:05 INFO  Main:355 - inserted user
+2021-11-29 21:30:06 INFO  Main:197 - sell chestunna
+2021-11-29 21:30:06 INFO  Main:205 - Transaction fail
+2021-11-29 21:30:10 INFO  Main:403 - success
+2021-11-29 21:30:10 INFO  Main:350 - success
+2021-11-29 21:30:10 INFO  Main:355 - inserted user
+2021-11-29 21:30:12 INFO  Main:403 - success
+2021-11-29 21:30:12 INFO  Main:350 - success
+2021-11-29 21:30:12 INFO  Main:355 - inserted user
+2021-11-29 21:30:12 INFO  Main:403 - success
+2021-11-29 21:30:12 INFO  Main:350 - success
+2021-11-29 21:30:12 INFO  Main:355 - inserted user
+2021-11-29 21:30:14 INFO  Main:334 - success
+2021-11-29 21:30:31 INFO  Main:403 - success
+2021-11-29 21:30:31 INFO  Main:350 - success
+2021-11-29 21:30:31 INFO  Main:355 - inserted user
+2021-11-29 21:30:45 INFO  Main:403 - success
+2021-11-29 21:30:45 INFO  Main:350 - success
+2021-11-29 21:30:45 INFO  Main:355 - inserted user
+2021-11-29 21:30:45 INFO  Main:197 - sell chestunna
+2021-11-29 21:30:45 INFO  Main:205 - Transaction fail
+2021-11-29 21:30:47 INFO  Main:403 - success
+2021-11-29 21:30:47 INFO  Main:350 - success
+2021-11-29 21:30:47 INFO  Main:355 - inserted user
+2021-11-29 21:30:50 INFO  Main:403 - success
+2021-11-29 21:30:50 INFO  Main:350 - success
+2021-11-29 21:30:50 INFO  Main:355 - inserted user
+2021-11-29 21:30:51 INFO  Main:403 - success
+2021-11-29 21:30:51 INFO  Main:350 - success
+2021-11-29 21:30:51 INFO  Main:355 - inserted user
+2021-11-29 21:30:51 INFO  Main:403 - success
+2021-11-29 21:30:51 INFO  Main:350 - success
+2021-11-29 21:30:51 INFO  Main:355 - inserted user
+2021-11-29 21:30:51 INFO  Main:403 - success
+2021-11-29 21:30:51 INFO  Main:350 - success
+2021-11-29 21:30:51 INFO  Main:355 - inserted user
+2021-11-29 21:30:51 INFO  Main:403 - success
+2021-11-29 21:30:51 INFO  Main:350 - success
+2021-11-29 21:30:51 INFO  Main:355 - inserted user
+2021-11-29 21:30:51 INFO  Main:403 - success
+2021-11-29 21:30:51 INFO  Main:350 - success
+2021-11-29 21:30:51 INFO  Main:355 - inserted user
+2021-11-29 21:30:56 INFO  Main:403 - success
+2021-11-29 21:30:56 INFO  Main:350 - success
+2021-11-29 21:30:56 INFO  Main:355 - inserted user
+2021-11-29 21:31:43 INFO  Main:403 - success
+2021-11-29 21:31:43 INFO  Main:350 - success
+2021-11-29 21:31:43 INFO  Main:355 - inserted user
+2021-11-29 21:34:22 INFO  Main:399 - success
+2021-11-29 21:34:22 INFO  Main:346 - success
+2021-11-29 21:34:22 INFO  Main:351 - inserted user
+2021-11-29 21:34:22 INFO  Main:204 - Transaction fail
+2021-11-29 21:34:25 INFO  Main:399 - success
+2021-11-29 21:34:25 INFO  Main:346 - success
+2021-11-29 21:34:25 INFO  Main:351 - inserted user
+2021-11-29 21:34:27 INFO  Main:399 - success
+2021-11-29 21:34:27 INFO  Main:346 - success
+2021-11-29 21:34:27 INFO  Main:351 - inserted user
+2021-11-29 21:34:28 INFO  Main:399 - success
+2021-11-29 21:34:28 INFO  Main:346 - success
+2021-11-29 21:34:28 INFO  Main:351 - inserted user
+2021-11-29 21:34:29 INFO  Main:399 - success
+2021-11-29 21:34:29 INFO  Main:346 - success
+2021-11-29 21:34:29 INFO  Main:351 - inserted user
+2021-11-29 21:34:48 INFO  Main:103 - listcompanies successful
+2021-11-29 21:35:04 INFO  Main:103 - listcompanies successful
+2021-11-29 21:35:04 INFO  Main:117 - Transaction successful
+2021-11-29 21:35:07 INFO  Main:399 - success
+2021-11-29 21:35:07 INFO  Main:346 - success
+2021-11-29 21:35:07 INFO  Main:351 - inserted user
+2021-11-29 21:35:11 INFO  Main:399 - success
+2021-11-29 21:35:11 INFO  Main:346 - success
+2021-11-29 21:35:11 INFO  Main:351 - inserted user
+2021-11-29 21:35:39 INFO  Main:399 - success
+2021-11-29 21:35:39 INFO  Main:346 - success
+2021-11-29 21:35:39 INFO  Main:351 - inserted user
+2021-11-29 21:35:39 INFO  Main:204 - Transaction fail
+2021-11-29 21:35:42 INFO  Main:399 - success
+2021-11-29 21:35:42 INFO  Main:346 - success
+2021-11-29 21:35:42 INFO  Main:351 - inserted user
+2021-11-29 21:35:45 INFO  Main:399 - success
+2021-11-29 21:35:45 INFO  Main:346 - success
+2021-11-29 21:35:45 INFO  Main:351 - inserted user
+2021-11-29 21:35:46 INFO  Main:399 - success
+2021-11-29 21:35:46 INFO  Main:346 - success
+2021-11-29 21:35:46 INFO  Main:351 - inserted user
+2021-11-29 21:36:04 INFO  Main:46 - user logged inaravind@gmail.com
+2021-11-29 21:36:05 INFO  Main:399 - success
+2021-11-29 21:36:05 INFO  Main:346 - success
+2021-11-29 21:36:05 INFO  Main:351 - inserted user
+2021-11-29 21:36:05 INFO  Main:204 - 
+2021-11-29 21:36:06 INFO  Main:399 - success
+2021-11-29 21:36:06 INFO  Main:346 - success
+2021-11-29 21:36:06 INFO  Main:351 - inserted user
+2021-11-29 21:36:08 INFO  Main:399 - success
+2021-11-29 21:36:08 INFO  Main:346 - success
+2021-11-29 21:36:08 INFO  Main:351 - inserted user
+2021-11-29 21:36:13 INFO  Main:330 - success
+2021-11-29 21:36:22 INFO  Main:399 - success
+2021-11-29 21:36:22 INFO  Main:346 - success
+2021-11-29 21:36:22 INFO  Main:351 - inserted user
+2021-11-29 21:36:23 INFO  Main:399 - success
+2021-11-29 21:36:23 INFO  Main:346 - success
+2021-11-29 21:36:23 INFO  Main:351 - inserted user
+2021-11-29 21:36:29 INFO  Main:103 - listcompanies successful
+2021-11-29 21:36:38 INFO  Main:399 - success
+2021-11-29 21:36:38 INFO  Main:346 - success
+2021-11-29 21:36:38 INFO  Main:351 - inserted user
+2021-11-29 21:36:39 INFO  Main:204 - Transaction successful
+2021-11-29 21:36:41 INFO  Main:399 - success
+2021-11-29 21:36:41 INFO  Main:346 - success
+2021-11-29 21:36:41 INFO  Main:351 - inserted user
+2021-11-29 21:36:44 INFO  Main:399 - success
+2021-11-29 21:36:44 INFO  Main:346 - success
+2021-11-29 21:36:44 INFO  Main:351 - inserted user
+2021-11-29 21:36:45 INFO  Main:330 - success
+2021-11-29 21:38:06 INFO  StockManagementDAO:43 - Inserted user
+2021-11-29 21:38:06 INFO  Main:31 - inserted userx@g.com
+2021-11-29 21:39:34 INFO  Main:46 - user logged inx@g.com
+2021-11-29 21:39:41 INFO  Main:103 - listcompanies successful
+2021-11-29 21:40:41 INFO  Main:103 - listcompanies successful
+2021-11-29 21:40:41 INFO  Main:117 - Balance insufficient
+2021-11-29 21:40:52 INFO  Main:103 - listcompanies successful
+2021-11-29 21:40:52 INFO  Main:117 - Balance insufficient
+2021-11-29 21:40:57 INFO  Main:330 - success
+2021-11-29 21:40:59 INFO  Main:215 - success
+2021-11-29 21:41:00 INFO  Main:399 - success
+2021-11-29 21:41:00 INFO  Main:346 - success
+2021-11-29 21:41:00 INFO  Main:351 - inserted user
+2021-11-29 21:41:01 INFO  Main:103 - listcompanies successful
+2021-11-29 21:41:03 INFO  Main:399 - success
+2021-11-29 21:41:03 INFO  Main:346 - success
+2021-11-29 21:41:03 INFO  Main:351 - inserted user
+2021-11-29 21:41:04 INFO  Main:103 - listcompanies successful
+2021-11-29 21:41:10 INFO  Main:103 - listcompanies successful
+2021-11-29 21:41:28 INFO  Main:103 - listcompanies successful
+2021-11-29 21:41:28 INFO  Main:117 - Balance insufficient
+2021-11-29 21:43:58 INFO  Main:399 - success
+2021-11-29 21:43:58 INFO  Main:346 - success
+2021-11-29 21:43:58 INFO  Main:351 - inserted user
+2021-11-29 21:44:01 INFO  Main:399 - success
+2021-11-29 21:44:01 INFO  Main:346 - success
+2021-11-29 21:44:01 INFO  Main:351 - inserted user
+2021-11-29 21:44:05 INFO  Main:415 - success
+2021-11-29 21:44:09 INFO  Main:103 - listcompanies successful
+2021-11-29 21:44:16 INFO  Main:103 - listcompanies successful
+2021-11-29 21:44:16 INFO  Main:117 - Balance insufficient
+2021-11-29 21:44:24 INFO  Main:399 - success
+2021-11-29 21:44:24 INFO  Main:346 - success
+2021-11-29 21:44:24 INFO  Main:351 - inserted user
+2021-11-29 21:44:24 INFO  Main:204 - Transaction fail
+2021-11-29 21:44:30 INFO  Main:399 - success
+2021-11-29 21:44:30 INFO  Main:346 - success
+2021-11-29 21:44:30 INFO  Main:351 - inserted user
+2021-11-29 21:44:31 INFO  Main:399 - success
+2021-11-29 21:44:31 INFO  Main:346 - success
+2021-11-29 21:44:31 INFO  Main:351 - inserted user
+2021-11-29 21:44:33 INFO  Main:399 - success
+2021-11-29 21:44:33 INFO  Main:346 - success
+2021-11-29 21:44:33 INFO  Main:351 - inserted user
+2021-11-29 21:44:49 INFO  Main:399 - success
+2021-11-29 21:44:49 INFO  Main:346 - success
+2021-11-29 21:44:49 INFO  Main:351 - inserted user
+2021-11-29 21:45:08 INFO  Main:399 - success
+2021-11-29 21:45:08 INFO  Main:346 - success
+2021-11-29 21:45:08 INFO  Main:351 - inserted user
+2021-11-29 21:45:08 INFO  Main:204 - Transaction successful
+2021-11-29 21:45:14 INFO  Main:399 - success
+2021-11-29 21:45:14 INFO  Main:346 - success
+2021-11-29 21:45:14 INFO  Main:351 - inserted user
+2021-11-29 21:45:16 INFO  Main:330 - success
+2021-11-29 21:45:39 INFO  Main:330 - success
+2021-11-29 21:45:52 INFO  Main:330 - success
+2021-11-29 21:45:58 INFO  Main:330 - success
+2021-11-29 21:48:29 INFO  Main:399 - success
+2021-11-29 21:48:29 INFO  Main:346 - success
+2021-11-29 21:48:29 INFO  Main:351 - inserted user
+2021-11-29 21:48:30 INFO  Main:399 - success
+2021-11-29 21:48:30 INFO  Main:346 - success
+2021-11-29 21:48:30 INFO  Main:351 - inserted user
+2021-11-29 21:48:35 INFO  Main:161 - trade request list 
+2021-11-29 21:49:10 INFO  Main:330 - success
+2021-11-29 21:49:13 INFO  Main:399 - success
+2021-11-29 21:49:13 INFO  Main:346 - success
+2021-11-29 21:49:13 INFO  Main:351 - inserted user
+2021-11-29 21:49:27 INFO  Main:399 - success
+2021-11-29 21:49:27 INFO  Main:346 - success
+2021-11-29 21:49:27 INFO  Main:351 - inserted user
+2021-11-29 21:49:55 INFO  Main:204 - Transaction successful
+2021-11-29 21:51:09 INFO  Main:399 - success
+2021-11-29 21:51:09 INFO  Main:346 - success
+2021-11-29 21:51:09 INFO  Main:351 - inserted user
+2021-11-29 21:51:09 INFO  Main:399 - success
+2021-11-29 21:51:09 INFO  Main:346 - success
+2021-11-29 21:51:09 INFO  Main:351 - inserted user
+2021-11-29 21:51:11 INFO  Main:415 - success
+2021-11-29 21:51:13 INFO  Main:399 - success
+2021-11-29 21:51:13 INFO  Main:346 - success
+2021-11-29 21:51:13 INFO  Main:351 - inserted user
+2021-11-29 21:51:14 INFO  Main:399 - success
+2021-11-29 21:51:14 INFO  Main:346 - success
+2021-11-29 21:51:14 INFO  Main:351 - inserted user
+2021-11-29 21:51:16 INFO  Main:415 - success
+2021-11-29 21:51:25 INFO  Main:399 - success
+2021-11-29 21:51:25 INFO  Main:346 - success
+2021-11-29 21:51:25 INFO  Main:351 - inserted user
+2021-11-29 21:51:26 INFO  Main:415 - success
+2021-11-29 21:51:28 INFO  Main:399 - success
+2021-11-29 21:51:28 INFO  Main:346 - success
+2021-11-29 21:51:28 INFO  Main:351 - inserted user
+2021-11-29 21:53:12 INFO  Main:215 - success
+2021-11-29 21:53:13 INFO  Main:161 - trade request list 
+2021-11-29 21:53:14 INFO  Main:330 - success
+2021-11-29 21:53:16 INFO  Main:415 - success
+2021-11-29 21:53:19 INFO  Main:415 - success
+2021-11-29 21:53:20 INFO  Main:161 - trade request list 
+2021-11-29 21:53:42 INFO  Main:399 - success
+2021-11-29 21:53:42 INFO  Main:346 - success
+2021-11-29 21:53:42 INFO  Main:351 - inserted user
+2021-11-29 21:53:44 INFO  Main:399 - success
+2021-11-29 21:53:44 INFO  Main:346 - success
+2021-11-29 21:53:44 INFO  Main:351 - inserted user
+2021-11-29 21:53:48 INFO  Main:399 - success
+2021-11-29 21:53:48 INFO  Main:346 - success
+2021-11-29 21:53:48 INFO  Main:351 - inserted user
+2021-11-29 21:53:49 INFO  Main:399 - success
+2021-11-29 21:53:49 INFO  Main:346 - success
+2021-11-29 21:53:49 INFO  Main:351 - inserted user
+2021-11-29 21:54:05 INFO  Main:399 - success
+2021-11-29 21:54:05 INFO  Main:346 - success
+2021-11-29 21:54:05 INFO  Main:351 - inserted user
+2021-11-29 21:54:05 INFO  Main:204 - 
+2021-11-29 21:54:09 INFO  Main:399 - success
+2021-11-29 21:54:09 INFO  Main:346 - success
+2021-11-29 21:54:09 INFO  Main:351 - inserted user
+2021-11-29 21:54:53 INFO  Main:399 - success
+2021-11-29 21:54:53 INFO  Main:346 - success
+2021-11-29 21:54:53 INFO  Main:351 - inserted user
+2021-11-29 21:54:54 INFO  Main:399 - success
+2021-11-29 21:54:54 INFO  Main:346 - success
+2021-11-29 21:54:54 INFO  Main:351 - inserted user
+2021-11-29 21:54:55 INFO  Main:399 - success
+2021-11-29 21:54:55 INFO  Main:346 - success
+2021-11-29 21:54:55 INFO  Main:351 - inserted user
+2021-11-29 21:55:14 INFO  Main:399 - success
+2021-11-29 21:55:14 INFO  Main:346 - success
+2021-11-29 21:55:14 INFO  Main:351 - inserted user
+2021-11-29 21:55:14 INFO  Main:204 - Transaction successful
+2021-11-29 21:55:19 INFO  Main:399 - success
+2021-11-29 21:55:19 INFO  Main:346 - success
+2021-11-29 21:55:19 INFO  Main:351 - inserted user
+2021-11-29 21:55:22 INFO  Main:330 - success
+2021-11-29 21:55:52 INFO  Main:161 - trade request list 
+2021-11-29 21:56:46 INFO  Main:161 - trade request list 
+2021-11-29 21:56:50 INFO  Main:103 - listcompanies successful
+2021-11-29 21:57:28 INFO  Main:103 - listcompanies successful
+2021-11-29 21:57:28 INFO  Main:117 - Balance insufficient
+2021-11-29 21:57:30 INFO  Main:161 - trade request list 
+2021-11-29 21:57:36 INFO  Main:103 - listcompanies successful
+2021-11-29 21:57:38 INFO  Main:399 - success
+2021-11-29 21:57:38 INFO  Main:346 - success
+2021-11-29 21:57:38 INFO  Main:351 - inserted user
+2021-11-29 21:57:43 INFO  Main:399 - success
+2021-11-29 21:57:43 INFO  Main:346 - success
+2021-11-29 21:57:43 INFO  Main:351 - inserted user
+2021-11-29 21:57:45 INFO  Main:103 - listcompanies successful
+2021-11-29 21:57:50 INFO  Main:161 - trade request list 
+2021-11-29 21:58:09 INFO  Main:103 - listcompanies successful
+2021-11-29 21:58:17 INFO  Main:415 - success
+2021-11-29 21:58:21 INFO  Main:103 - listcompanies successful
+2021-11-29 21:58:44 INFO  Main:103 - listcompanies successful
+2021-11-29 21:58:45 ERROR Main:120 - Data truncation: Data too long for column 'company_id' at row 1
+2021-11-29 21:58:47 INFO  Main:161 - trade request list 
+2021-11-29 21:58:48 INFO  Main:415 - success
+2021-11-29 21:58:54 INFO  Main:161 - trade request list 
+2021-11-29 21:59:11 INFO  Main:103 - listcompanies successful
+2021-11-29 21:59:31 INFO  Main:103 - listcompanies successful
+2021-11-29 21:59:31 INFO  Main:117 - Transaction successful
+2021-11-29 21:59:34 INFO  Main:161 - trade request list 
+2021-11-29 21:59:55 INFO  Main:61 - stockBrokerLogin:Srikanth@gmail.com
+2021-11-29 21:59:55 INFO  Main:103 - listcompanies successful
+2021-11-29 22:00:19 INFO  Main:80 - upload by admin:Uploaded the file successfully: new_Stock (1).xlsx
+2021-11-29 22:00:19 INFO  Main:103 - listcompanies successful
+2021-11-29 22:00:23 INFO  Main:46 - user logged inx@g.com
+2021-11-29 22:00:29 INFO  Main:46 - user logged inaravind@gmail.com
+2021-11-29 22:00:31 INFO  Main:161 - trade request list 
+2021-11-29 22:00:33 INFO  Main:399 - success
+2021-11-29 22:00:33 INFO  Main:346 - success
+2021-11-29 22:00:33 INFO  Main:351 - inserted user
+2021-11-29 22:00:36 INFO  Main:46 - user logged injasdj

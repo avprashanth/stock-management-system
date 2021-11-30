@@ -39,7 +39,7 @@ public class ExcelHelper {
             Sheet sheet = workbook.getSheet(SHEET);
             Iterator<Row> rows = sheet.iterator();
 
-            String sql = "INSERT INTO companystock (id, company_id, created_time, price, available_quantity, updated_time) VALUES (?,?, CURRENT_TIMESTAMP, ?, ?, CURRENT_TIMESTAMP)";
+            String sql = "INSERT INTO CompanyStock (id, company_id, created_time, price, available_quantity, updated_time) VALUES (?,?, CURRENT_TIMESTAMP, ?, ?, CURRENT_TIMESTAMP)";
             PreparedStatement statement = connection.prepareStatement(sql);
 
             int rowNumber = 0;

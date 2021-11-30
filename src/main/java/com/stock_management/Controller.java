@@ -194,7 +194,6 @@ public class Controller {
 
     @PostMapping("/sellStocks")
     String sellStocks(@RequestParam String companyId, @RequestParam int price, @RequestParam int quantity,@RequestParam String userId,@RequestParam String batchId) {
-        logger.info("sell chestunna");
         String response = "";
         try {
             Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -240,9 +239,6 @@ public class Controller {
                     hm.get(stock.getCompany_id()).add(stock.getPrice());
                 }
             }
-
-//            Map<Integer, List<String>> treemap =
-//                    new TreeMap<Integer, List<String>>(Collections.reverseOrder());
             ArrayList<String> res
                     = new ArrayList<String>();
 
@@ -324,7 +320,6 @@ public class Controller {
         }
     }
 
-
     @PostMapping("/portfolio")
     List<Portfolio> getPortfolioDetails(@RequestParam String userId) {
         List<Portfolio> getPortfolioDetails = new ArrayList<>();
@@ -338,7 +333,6 @@ public class Controller {
         }
         return getPortfolioDetails;
     }
-
 
     @GetMapping("/companiesByUser")
     List<UserBatch> GetCompaniesByUserId(@RequestParam String userId) {
@@ -407,7 +401,6 @@ public class Controller {
         }
     }
 
-
     @GetMapping("/getBalance")
     UserBalance GetBalance(@RequestParam String userId) {
         UserBalance balance = null;
@@ -423,5 +416,4 @@ public class Controller {
         }
         return balance;
     }
-
 }

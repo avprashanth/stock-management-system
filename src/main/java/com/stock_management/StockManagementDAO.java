@@ -202,7 +202,7 @@ public class StockManagementDAO {
     }
 
     private int getCompanyPrice(Connection connection, String companyId) throws SQLException {
-        String query = "select price from companystock where company_id = ?";
+        String query = "select price from CompanyStock where company_id = ? order by created_time desc";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setString(1, companyId);
         ResultSet set = statement.executeQuery();
@@ -231,7 +231,6 @@ public class StockManagementDAO {
         statement1.setString(1, userId);
         statement1.setString(2, companyId);
         statement1.setString(3, batchId);
-//        connection.setAutoCommit(false);
         ResultSet resultSet = statement1.executeQuery();
         int soldStocks = 0;
         while (resultSet.next())
@@ -240,7 +239,6 @@ public class StockManagementDAO {
         }
         int availableQuantity = totalStocksAvailable - soldStocks;
         int availableStocks = checkAvailableStocks(connection, companyId);
-        //user level stocks
         if(availableQuantity >= quantity)
         {
             String requestId = UUID.randomUUID().toString();
@@ -259,7 +257,6 @@ public class StockManagementDAO {
             statement2.setString(7, userId);
             statement2.executeUpdate();
             if(status.equals("success")){
-//                connection.commit();
                 updateUserBalance(connection, userBalance + (price * quantity), userId);
             }
             updateCompanyStocks(connection, availableStocks + quantity, companyId);
@@ -292,7 +289,7 @@ public class StockManagementDAO {
     public int checkAvailableStocks(Connection conn, String companyId) {
         int availableStocks = 0;
         try{
-            PreparedStatement preparedStatement = conn.prepareStatement("Select available_quantity from companystock where company_id = ? order by created_time desc limit 1");
+            PreparedStatement preparedStatement = conn.prepareStatement("Select available_quantity from CompanyStock where company_id = ? order by created_time desc limit 1");
             preparedStatement.setString(1,companyId);
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -324,7 +321,7 @@ public class StockManagementDAO {
     public boolean canUserPurchase(Connection connection, String companyId, int quantity, int userBalance) {
         int listedPrice = 0;
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("Select price from companystock where company_id = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("Select price from CompanyStock where company_id = ?");
             preparedStatement.setString(1,companyId);
             ResultSet resultSet = preparedStatement.executeQuery();
             while(resultSet.next()) {
@@ -396,7 +393,7 @@ public class StockManagementDAO {
 
     public String updateCompanyStocks(Connection connection, int availableStocks, String companyId) {
         String response = "";
-        String updateCompanyStocks = "Update companystock set available_quantity = ? where company_id = ?";
+        String updateCompanyStocks = "Update CompanyStock set available_quantity = ? where company_id = ?";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(updateCompanyStocks);
             preparedStatement.setInt(1,availableStocks);
@@ -413,7 +410,7 @@ public class StockManagementDAO {
 
     public int checkIfCompanyIsListedAtAskingPrice(Connection connection, String companyId, int askingPrice, int quantity) {
         int availableStocks = 0;
-        String selectCompanyPrice = "Select quantity from companystock where company_id = ? and price >= ?";
+        String selectCompanyPrice = "Select available_quantity from CompanyStock where company_id = ? and price >= ?";
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(selectCompanyPrice);
             preparedStatement.setString(1, companyId);
@@ -457,7 +454,6 @@ public class StockManagementDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     public void writeGainOrLossToTable(Connection connection, String companyId, String userId, String gainOrLoss ) {
@@ -504,11 +500,10 @@ public class StockManagementDAO {
         return transactionReports;
     }
 
-
     public List<CompanyStock> getCompanyList(Connection conn) {
         List<CompanyStock> companyStocks = new ArrayList<CompanyStock>();
         try {
-            PreparedStatement statement = conn.prepareStatement("Select company_id,price,available_quantity from companystock order by created_time");
+            PreparedStatement statement = conn.prepareStatement("Select company_id,price,available_quantity from CompanyStock order by created_time desc");
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {

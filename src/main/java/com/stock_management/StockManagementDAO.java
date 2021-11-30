@@ -492,7 +492,7 @@ public class StockManagementDAO {
     public List<TransactionReport> getTransactionReports(Connection connection, String userId) {
         List<TransactionReport> transactionReports = new ArrayList<>();
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT company_id, action, quantity, price, status FROM traderequest where user_id = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT company_id, action, quantity, price, status FROM traderequest where user_id = ? order by requested_time desc");
             preparedStatement.setString(1,userId);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -513,7 +513,7 @@ public class StockManagementDAO {
     public List<CompanyStock> getCompanyList(Connection conn) {
         List<CompanyStock> companyStocks = new ArrayList<CompanyStock>();
         try {
-            PreparedStatement statement = conn.prepareStatement("Select company_id,price,available_quantity from CompanyStock order by company_id asc, created_time desc");
+            PreparedStatement statement = conn.prepareStatement("Select company_id,price,available_quantity from CompanyStock order by created_time desc, company_id asc");
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {

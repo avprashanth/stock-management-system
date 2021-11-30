@@ -235,42 +235,56 @@ public class Controller {
                     values = new ArrayList<>();
                     values.add(stock.getPrice());
                     hm.put(stock.getCompany_id(), values);
-                    logger.info("one");
                 }
                 else {
                     hm.get(stock.getCompany_id()).add(stock.getPrice());
-                    logger.info("two");
                 }
             }
 
-            Map<Integer, String> treemap =
-                    new TreeMap<Integer, String>(Collections.reverseOrder());
+//            Map<Integer, List<String>> treemap =
+//                    new TreeMap<Integer, List<String>>(Collections.reverseOrder());
             ArrayList<String> res
                     = new ArrayList<String>();
 
             int noofrecommendations = 5;
             if(saferisk.equals("risk")) {
+                Map<Integer, List<String>> treemap =
+                        new TreeMap<Integer, List<String>>(Collections.reverseOrder());
                 for(Map.Entry<String, List<Integer>> companyData: hm.entrySet()) {
                     int pricedifference;
                     List<Integer> l = companyData.getValue();
                     pricedifference = l.get(l.size() - 1) - l.get(0);
-                    treemap.put(pricedifference, companyData.getKey());
+                    if(treemap.containsKey(pricedifference)) {
+                        treemap.get(pricedifference).add(companyData.getKey());
+                    }
+                    else {
+                        List<String> newList = new ArrayList<String>();
+                        newList.add(companyData.getKey());
+                        treemap.put(pricedifference, newList);
+                    }
                 }
 
                 Set set = treemap.entrySet();
                 Iterator i = set.iterator();
+
                 // Traverse map and print elements
                 while (i.hasNext() && noofrecommendations > 0) {
                     Map.Entry me = (Map.Entry)i.next();
                     System.out.print(me.getKey() + ": ");
-                    System.out.println(me.getValue());
-                    res.add((String) me.getValue());
-                    noofrecommendations--;
+                    List<String> val = (List<String>) me.getValue();
+                    int count = 0;
+                    while(count < val.size()) {
+                        if(noofrecommendations == 0) return res;
+                        res.add(val.get(count));
+                        count++;
+                        noofrecommendations--;
+                    }
                 }
-                logger.info("three");
                 return res;
             }
             else {
+                Map<Integer, List<String>> treemap =
+                        new TreeMap<Integer, List<String>>();
                 for(Map.Entry<String, List<Integer>> companyData: hm.entrySet()) {
                     int pricedeviation;
                     List<Integer> l = companyData.getValue();
@@ -279,7 +293,14 @@ public class Controller {
                         sum = sum + Math.pow(l.get(j + 1) - l.get(j), 2);
                     }
                     pricedeviation = (int) (sum / (l.size()));
-                    treemap.put(pricedeviation, companyData.getKey());
+                    if(treemap.containsKey(pricedeviation)) {
+                        treemap.get(pricedeviation).add(companyData.getKey());
+                    }
+                    else {
+                        List<String> newList = new ArrayList<String>();
+                        newList.add(companyData.getKey());
+                        treemap.put(pricedeviation, newList);
+                    }
                 }
                 Set set = treemap.entrySet();
                 Iterator i = set.iterator();
@@ -287,11 +308,15 @@ public class Controller {
                 while (i.hasNext() && noofrecommendations > 0) {
                     Map.Entry me = (Map.Entry)i.next();
                     System.out.print(me.getKey() + ": ");
-                    System.out.println(me.getValue());
-                    res.add((String) me.getValue());
-                    noofrecommendations--;
+                    List<String> val = (List<String>) me.getValue();
+                    int count = 0;
+                    while(count < val.size()) {
+                        if(noofrecommendations == 0) return res;
+                        res.add(val.get(count));
+                        count++;
+                        noofrecommendations--;
+                    }
                 }
-                logger.info("four");
                 return res;
             }
         } catch (SQLException e) {

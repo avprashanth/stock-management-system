@@ -419,7 +419,7 @@ public class StockManagementDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while(resultSet.next()) {
-                availableStocks = resultSet.getInt(0);
+                availableStocks = resultSet.getInt(1);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -535,10 +535,11 @@ public class StockManagementDAO {
                 int quantity = resultSet.getInt(4);
                 String action = resultSet.getString(5);
                 String requestId = resultSet.getString(6);
+                String batchId = resultSet.getString(7);
                 if (action.equals("buy"))
                     UpdatePurchaseRequests(connection, userId, companyId, price, quantity, requestId);
                 else if (action.equals("sell"))
-                    updateSellRequests(connection, userId, companyId, price, quantity, requestId);
+                    updateSellRequests(connection, userId, companyId, price, quantity, requestId, batchId);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -576,7 +577,7 @@ public class StockManagementDAO {
 
 
     public void updateSellRequests(Connection connection, String userId, String companyId,
-                                   int price, int quantity, String requestId) {
+                                   int price, int quantity, String requestId, String batchId) {
 
         int count = checkIfCompanyIsListedAtAskingPrice(connection, companyId, price, quantity);
         int userBalance = getUserBalance(connection, userId);
@@ -592,6 +593,28 @@ public class StockManagementDAO {
                 int updatedStockQuantity = availableStocks + quantity;
                 updateUserBalance(connection, updatedBalance, userId);
                 updateCompanyStocks(connection, updatedStockQuantity, companyId);
+
+                String sellQuery =
+                        "select price from traderequest" +
+                                " where user_id = ? and company_id = ? and batch_id = ? and status = 'success' and action = 'buy'";
+                PreparedStatement statement3 = connection.prepareStatement(sellQuery);
+                statement3.setString(1, userId);
+                statement3.setString(2, companyId);
+                statement3.setString(3, batchId);
+                ResultSet rs = statement3.executeQuery();
+                rs.next();
+                int prePrice = rs.getInt("price");
+                int gain = (price - prePrice) * quantity;
+
+
+                String insertDetails = "update StockDetails set gain = ? where customer_id = ? and company_id = ?";
+                PreparedStatement statement4 = connection.prepareStatement(insertDetails);
+                statement4.setInt(1, gain);
+                statement4.setString(2, userId);
+                statement4.setString(3, companyId);
+                statement4.executeUpdate();
+
+
             } catch (SQLException e) {
                 e.printStackTrace();
             }

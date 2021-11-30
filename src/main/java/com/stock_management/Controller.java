@@ -249,7 +249,7 @@ public class Controller {
                 for(Map.Entry<String, List<Integer>> companyData: hm.entrySet()) {
                     int pricedifference;
                     List<Integer> l = companyData.getValue();
-                    pricedifference = l.get(l.size() - 1) - l.get(0);
+                    pricedifference = l.get(0) - l.get(l.size() - 1);
                     if(treemap.containsKey(pricedifference)) {
                         treemap.get(pricedifference).add(companyData.getKey());
                     }
